@@ -17,7 +17,7 @@
             <li>&rarr; Lorem ipsum dolor sit amet</li>
             <li>&rarr; Lorem ipsum dolor sit amet</li>
           </ul>
-          <a href="#" class="btn">Buy Now</a>
+          <router-link :to="{ name: 'BuyPlans', params: { type: 'gold' } }" class="btn">Buy Now</router-link>
         </div>
       </div>
       <div class="plan">
@@ -34,7 +34,7 @@
             <li>&rarr; Lorem ipsum dolor sit amet</li>
             <li>&rarr; Lorem ipsum dolor sit amet</li>
           </ul>
-          <a href="#" class="btn">Buy Now</a>
+          <router-link :to="{ name: 'BuyPlans', params: { type: 'silver' } }" class="btn">Buy Now</router-link>
         </div>
       </div>
       <div class="plan">
@@ -51,7 +51,7 @@
             <li>&rarr; Lorem ipsum dolor sit amet</li>
             <li>&rarr; Lorem ipsum dolor sit amet</li>
           </ul>
-          <a href="#" class="btn">Buy Now</a>
+          <router-link :to="{ name: 'BuyPlans', params: { type: 'bronze' } }" class="btn">Buy Now</router-link>
         </div>
       </div>
       </div>

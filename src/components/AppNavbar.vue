@@ -1,7 +1,8 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <a href="#" class="logo">Wallet-Insurance</a>
+      <!-- <a href="#" class="logo">Wallet-Insurance</a> -->
+      <router-link class="logo" :to="{ name: 'Home'}">Wallet-Insurance</router-link>
       <a href="#" class="login-btn">Login</a>
     </div>
   </nav>
