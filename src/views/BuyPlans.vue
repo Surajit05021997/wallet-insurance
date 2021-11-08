@@ -2,7 +2,7 @@
   <div class="buy-plans">
     <div class="container">
       <p class="des">Enter your details</p>
-      <div>
+      <div class="box">
         <form>
           <div class="field-box">
             <label>Name</label>
@@ -14,20 +14,20 @@
           </div>
           <button class="btn">Continue to payment</button>
         </form>
-      </div>
-      <div class="summery-display">
-        <p>
-          <strong>Plan:</strong> {{$route.params.type}}
-        </p>
-        <p v-if="$route.params.type === 'gold'">
-          <strong>Cost:</strong> 1999
-        </p>
-        <p v-if="$route.params.type === 'silver'">
-          <strong>Cost:</strong> 1499
-        </p>
-        <p v-if="$route.params.type === 'bronze'">
-          <strong>Cost:</strong> 1199
-        </p>
+        <div class="summery-display">
+          <p>
+            <strong>Plan:</strong> <span>{{$route.params.type}}</span>
+          </p>
+          <p v-if="$route.params.type === 'gold'">
+            <strong>Cost:</strong> 1999
+          </p>
+          <p v-if="$route.params.type === 'silver'">
+            <strong>Cost:</strong> 1499
+          </p>
+          <p v-if="$route.params.type === 'bronze'">
+            <strong>Cost:</strong> 1199
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -46,18 +46,22 @@ export default {
 .container {
   max-width: 120rem;
   margin: 0 auto;
-  position: relative;
 }
 .des {
   font-size: 2.5rem;
   margin-top: 2rem;
   margin-bottom: 3rem;
 }
+.box {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 3rem;
+  align-items: start;
+}
 label {
   font-size: 2rem;
 }
 .field-box {
-  max-width: 60%;
   padding: 2rem;
   box-shadow: 0 0 10px 0 #ddd;
   border-radius: 5px;
@@ -70,7 +74,7 @@ input {
   font-size: 30px;
 }
 .btn {
-    background-color: #80bfff;
+    background-color: #007fff;
     padding: 1rem 2rem;
     margin: 2rem;
     margin-left: 0;
@@ -82,17 +86,18 @@ input {
   }
   .btn:hover {
     cursor: pointer;
-    background-color: #007fff;
+    background-color: #fff;
+    color: #000;
+    box-shadow: inset 0 0 0 0.2rem #007fff;
   }
   .summery-display {
-    position: absolute;
-    top: 6rem;
-    left: 70%;
-    width: 30%;
     box-shadow: 0 0 10px 0 #ddd;
     padding: 2rem;
   }
   .summery-display p {
     font-size: 2rem;
+  }
+  .summery-display p span {
+    text-transform: capitalize;
   }
 </style>

@@ -99,12 +99,15 @@
   }
   .gold-card {
     border: 5px solid #ffd700;
+    background-color: #fffbe6;
   }
   .silver-card {
     border: 5px solid #A9A9A9;
+    background-color: #f6f6f6;
   }
   .bronze-card {
     border: 5px solid #CD7F32;
+    background-color: #faf2eb;
   }
   .gold-card:hover {
     box-shadow: 0 0 30px 0.2px #ffd700;
@@ -142,7 +145,7 @@
     list-style-type: none;
   }
   .btn:link, .btn:visited {
-    background-color: #80bfff;
+    background-color: #007fff;
     padding: 1rem 2rem;
     margin: 2rem;
     text-decoration: none;
@@ -152,6 +155,8 @@
   }
   .btn:hover, .btn:active {
     cursor: pointer;
-    background-color: #007fff;
+    background-color: #fff;
+    color: #000;
+    box-shadow: inset 0 0 0 0.2rem #007fff;
   }
 </style>
