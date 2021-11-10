@@ -5,7 +5,7 @@
         <div class="hero-text-box">
           <h1>Lorem, ipsum.</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis animi dolor illo, rerum nisi aut. Odit a recusandae minima molestiae!</p>
-          <a href="#plans" class="btn">Protect your wallect</a>
+          <a href="#plans" class="btn"><strong>Protect your wallect</strong></a>
         </div>
         <div class="hero-img-box">
           <img src="@/assets/landing-page-img.png" alt="Man holding wallet." class="hero-img">

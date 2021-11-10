@@ -9,7 +9,7 @@
           <a href="#plans">Plans</a>
           <a href="#">Contact</a>
         <!-- </div> -->
-        <router-link class="login-btn" :to="{ name: 'Login'}">Login</router-link>
+        <router-link class="login-btn" :to="{ name: 'Login'}"><strong>Login</strong></router-link>
       </div>
     </div>
   </nav>

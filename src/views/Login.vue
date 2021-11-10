@@ -15,7 +15,7 @@
             <input type="checkbox">
             <label>Remember username</label>
           </div>
-          <button class="btn">LOGIN</button>
+          <button class="btn"><strong>LOGIN</strong></button>
         </form>
       </div>
     </div>
