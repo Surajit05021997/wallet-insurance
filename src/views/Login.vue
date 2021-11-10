@@ -99,19 +99,22 @@ export default {
   font-size: 1.5rem;
 }
 .btn {
-  font-size: 2rem;
-  background-color: #007fff;
-  color: #444;
-  letter-spacing: 0.5rem;
-  border-style: none;
-  border-radius: 100rem;
-  padding: 0 3rem;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.btn:hover {
-  color:#fff;
-}
+    background-color: #007fff;
+    padding: 0 2rem;
+    margin: 2rem;
+    margin-left: 0;
+    text-decoration: none;
+    border-style: none;
+    border-radius: 20rem;
+    font-size: 2rem;
+    color: #fff;
+  }
+  .btn:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    box-shadow: inset 0 0 0 0.2rem #007fff;
+  }
 @media screen and (max-width: 768px) {
   .login-card {
     grid-template-columns: 1fr;

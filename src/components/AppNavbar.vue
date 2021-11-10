@@ -2,8 +2,15 @@
   <nav class="navbar">
     <div class="container">
       <router-link class="logo" :to="{ name: 'Home'}">Wallet-Insurance</router-link>
-      <!-- <a href="#" class="login-btn">Login</a> -->
-      <router-link class="login-btn" :to="{ name: 'Login'}">Login</router-link>
+      <div class="right-nav">
+        <!-- <div class="right-nav"> -->
+          <a href="#">Home</a>
+          <a href="#">Service</a>
+          <a href="#plans">Plans</a>
+          <a href="#">Contact</a>
+        <!-- </div> -->
+        <router-link class="login-btn" :to="{ name: 'Login'}">Login</router-link>
+      </div>
     </div>
   </nav>
 </template>
@@ -16,7 +23,6 @@ export default {
 
 <style scoped>
   .navbar {
-    background-color: #02b0eb;
     padding: 0.5rem 2rem;
   }
 
@@ -31,12 +37,24 @@ export default {
   .logo:link, .logo:visited {
     font-size: 4rem;
     font-weight: 700;
-    color: #fff;
+    color: #007fff;
     text-decoration: none;
   }
 
   .logo:hover, logo:active {
     cursor: pointer;
+  }
+
+  .right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  .right-nav a {
+    text-decoration: none;
+    font-size: 2rem;
   }
 
   .login-btn:link, .login-btn:visited {
@@ -46,13 +64,14 @@ export default {
     text-decoration: none;
     padding:0.5rem 2rem;
     background-color: #fff;
+    box-shadow: inset 0 0 0 0.2rem #007fff;
     border-radius: 20rem;
     transition: all 0.3s;
   }
 
   .login-btn:hover, .login-btn:active {
     cursor: pointer;
-    box-shadow: inset 0 0 0 0.2rem #fff;
+    box-shadow: inset 0 0 0 0.2rem #007fff;
     background-color: #007fff;
     color: #fff;
   }

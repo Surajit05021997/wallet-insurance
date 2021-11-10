@@ -76,7 +76,7 @@ export default {
     margin-bottom:1rem;
   }
   .feature-description p {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 3rem;
   }
 </style>

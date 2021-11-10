@@ -12,7 +12,8 @@
             <label>Email</label>
             <input type="email">
           </div>
-          <button class="btn">Continue to payment</button>
+          <!-- <button class="btn">Continue to payment</button> -->
+          <router-link class="btn" :to="{ name: 'PaymentOption'}">Continue to payment</router-link>
         </form>
         <div class="summery-display">
           <p>

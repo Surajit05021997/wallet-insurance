@@ -3,160 +3,142 @@
     <div class="container">
       <h2>Our Plans</h2>
       <div class="plans">
+        <div class="plan best-plan">
+          <p class="plan-type">Gold</p>
+          <p class="plan-price">1999 INR <span>/ Month</span></p>
+          <ul>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+          </ul>
+          <router-link
+            :to="{ name: 'BuyPlans', params: { type: 'gold' } }"
+            class="btn"
+            ><strong>Buy Now</strong></router-link
+          >
+        </div>
         <div class="plan">
-        <div class="plan-card gold-card">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-          <div class="empty-block"></div>
-          <h3>Gold Plan</h3>
+          <p class="plan-type">Silver</p>
+          <p class="plan-price">1599 INR <span>/ Month</span></p>
           <ul>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
           </ul>
-          <router-link :to="{ name: 'BuyPlans', params: { type: 'gold' } }" class="btn">Buy Now</router-link>
+          <router-link
+            :to="{ name: 'BuyPlans', params: { type: 'silver' } }"
+            class="btn"
+            ><strong>Buy Now</strong></router-link
+          >
         </div>
-      </div>
-      <div class="plan">
-        <div class="plan-card silver-card">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-silver" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-          <div class="empty-block"></div>
-          <h3>Silver Plan</h3>
+        <div class="plan">
+          <p class="plan-type">Bronze</p>
+          <p class="plan-price">1199 INR <span>/ Month</span></p>
           <ul>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
           </ul>
-          <router-link :to="{ name: 'BuyPlans', params: { type: 'silver' } }" class="btn">Buy Now</router-link>
+          <router-link
+            :to="{ name: 'BuyPlans', params: { type: 'bronze' } }"
+            class="btn"
+            ><strong>Buy Now</strong></router-link
+          >
         </div>
-      </div>
-      <div class="plan">
-        <div class="plan-card bronze-card">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-bronze" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-          <div class="empty-block"></div>
-          <h3>Bronze Plan</h3>
-          <ul>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-            <li>&rarr; Lorem ipsum dolor sit amet</li>
-          </ul>
-          <router-link :to="{ name: 'BuyPlans', params: { type: 'bronze' } }" class="btn">Buy Now</router-link>
-        </div>
-      </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-  export default {
-
-  }
+export default {};
 </script>
 
 <style scoped>
-  .app-plans {
-    padding: 2rem;
-  }
-  .container {
-    max-width: 120rem;
-    margin: 0 auto;
-  }
-  .app-plans h2 {
-    font-size: 4.5rem;
-    margin-bottom: 2rem;
-  }
-  .plans {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 4rem;
-    margin: 4rem 0;
-  }
-  .plan {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .plan-card {
-    width: 80%;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    transition: all 0.3s;
-  }
-  .gold-card {
-    border: 5px solid #ffd700;
-    background-color: #fffbe6;
-  }
-  .silver-card {
-    border: 5px solid #A9A9A9;
-    background-color: #f6f6f6;
-  }
-  .bronze-card {
-    border: 5px solid #CD7F32;
-    background-color: #faf2eb;
-  }
-  .gold-card:hover {
-    box-shadow: 0 0 30px 0.2px #ffd700;
-  }
-  .silver-card:hover {
-    box-shadow: 0 0 30px 0.2px #A9A9A9;
-  }
-  .bronze-card:hover {
-    box-shadow: 0 0 30px 0.2px #CD7F32;
-  }
-  .icon {
-    width: 10rem;
-    margin: 2rem;
-  }
-  .icon-gold {
-    stroke: #ffd700;
-  }
-  .icon-silver {
-    stroke: #A9A9A9;
-  }
-  .icon-bronze {
-    stroke: #CD7F32;
-  }
-  .empty-block {
-    border: 2px solid #999;
-    width: 90%;
-    margin-bottom: 1rem;
-  }
-  .plan-card h3 {
-    font-size: 3rem;
-  }
-  .plan-card ul li {
-    font-size: 2rem;
-    line-height: 4rem;
-    list-style-type: none;
-  }
-  .btn:link, .btn:visited {
-    background-color: #007fff;
-    padding: 1rem 2rem;
-    margin: 2rem;
-    text-decoration: none;
-    border-radius: 20rem;
-    font-size: 2rem;
-    color: #fff;
-  }
-  .btn:hover, .btn:active {
-    cursor: pointer;
-    background-color: #fff;
-    color: #000;
-    box-shadow: inset 0 0 0 0.2rem #007fff;
-  }
+.app-plans {
+  padding: 2rem;
+}
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+.plans {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+.plan {
+  padding: 5rem 3rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.plan:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+.best-plan {
+  background-color: #007fff;
+  color: #fff;
+}
+.app-plans h2 {
+  font-size: 4.5rem;
+  margin-bottom: 2rem;
+}
+.plan-type {
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 0;
+}
+.plan-price {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+span {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #999;
+}
+.best-plan span {
+  color: #ccc;
+}
+ul {
+  font-size: 2rem;
+}
+ul li {
+  margin-bottom: 2rem;
+}
+.btn:link,
+.btn:visited {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  margin: 1rem 0;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 0.2rem #007fff;
+  border-radius: 20rem;
+  transition: all 0.3s;
+}
+
+.btn:hover,
+.btn:active {
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0.2rem #007fff;
+  background-color: #007fff;
+  color: #fff;
+}
+.best-plan .btn:link, .best-plan .btn:visited {
+  background-color: rgb(255, 208, 0);
+  box-shadow: none;
+  color: #007fff;
+}
+.best-plan .btn:hover, .best-plan .btn:active {
+  box-shadow: none;
+  color: #000;
+}
 </style>

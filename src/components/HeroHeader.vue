@@ -8,12 +8,10 @@
           <a href="#plans" class="btn">Protect your wallect</a>
         </div>
         <div class="hero-img-box">
-          <img src="@/assets/wallet-img.jpg" alt="Man holding wallet." class="hero-img">
+          <img src="@/assets/landing-page-img.png" alt="Man holding wallet." class="hero-img">
         </div>
       </div>
     </section>
-    <div class="empty-block">
-    </div>
   </div>
 </template>
 
@@ -25,7 +23,7 @@ export default {
 
 <style scoped>
   .hero-header {
-    background-color: #80bfff;
+    /* background-color: #80bfff; */
     padding: 2rem;
   }
   .container {
@@ -41,12 +39,12 @@ export default {
   .hero-text-box h1 {
     font-size: 7rem;
     letter-spacing: -0.2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   .hero-text-box p {
     font-size: 2.5rem;
     line-height: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
   }
   .btn:link, .btn:visited {
     font-size: 2rem;
@@ -55,13 +53,14 @@ export default {
     text-decoration: none;
     padding:0.5rem 2rem;
     background-color: #fff;
+    box-shadow: inset 0 0 0 0.2rem #007fff;
     border-radius: 20rem;
     transition: all 0.3s;
   }
 
   .btn:hover, .btn:active {
     cursor: pointer;
-    box-shadow: inset 0 0 0 0.2rem #fff;
+    box-shadow: inset 0 0 0 0.2rem #007fff;
     background-color: #007fff;
     color: #fff;
   }
@@ -73,8 +72,8 @@ export default {
     width: 100%;
     border-radius: 8px;
   }
-  .empty-block {
+  /* .empty-block {
     height: 8rem;
     background: linear-gradient(#80bfff, #fff);
-  }
+  } */
 </style>
