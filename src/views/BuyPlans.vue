@@ -74,7 +74,7 @@ input {
   font-size: 30px;
 }
 .btn {
-    background-color: #80bfff;
+    background-color: #007fff;
     padding: 1rem 2rem;
     margin: 2rem;
     margin-left: 0;
@@ -86,7 +86,9 @@ input {
   }
   .btn:hover {
     cursor: pointer;
-    background-color: #007fff;
+    background-color: #fff;
+    color: #000;
+    box-shadow: inset 0 0 0 0.2rem #007fff;
   }
   .summery-display {
     box-shadow: 0 0 10px 0 #ddd;
