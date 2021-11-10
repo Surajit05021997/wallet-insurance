@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
+import Login from '@/views/Login.vue'
 import BuyPlans from '@/views/BuyPlans.vue'
+import Dashboard from '@/views/Dashboard'
 
 Vue.use(VueRouter)
 
@@ -12,9 +14,19 @@ const routes = [
     component: Home,
   },
   {
+    path: '/login',
+    name:'Login',
+    component: Login,
+  },
+  {
     path: '/buyPlans/:type',
     name:'BuyPlans',
     component: BuyPlans,
+  },
+  {
+    path: '/dashboard',
+    name:'Dashboard',
+    component: Dashboard,
   }
 ]
 

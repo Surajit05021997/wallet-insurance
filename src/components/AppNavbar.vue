@@ -3,7 +3,8 @@
     <div class="container">
       <!-- <a href="#" class="logo">Wallet-Insurance</a> -->
       <router-link class="logo" :to="{ name: 'Home'}">Wallet-Insurance</router-link>
-      <a href="#" class="login-btn">Login</a>
+      <!-- <a href="#" class="login-btn">Login</a> -->
+      <router-link class="login-btn" :to="{ name: 'Login'}">Login</router-link>
     </div>
   </nav>
 </template>
@@ -16,8 +17,8 @@ export default {
 
 <style scoped>
   .navbar {
-    background-color: #007fff;
-    padding: 3.5rem 2rem;
+    background-color: #02b0eb;
+    padding: 0.5rem 2rem;
   }
 
   .container {
