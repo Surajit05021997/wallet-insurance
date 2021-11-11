@@ -1,0 +1,33 @@
+{
+  "customers": [
+    {
+      "name": "Anusha",
+      "emailId": "anusha@gmail.com",
+      "mobileNum": 9553805468
+    },
+    {
+      "name": "Surajit",
+      "emailId": "surajit@gmail.com",
+      "mobileNum": 9553546756
+    }
+  ],
+  "banks": [
+    {
+      "id": 1,
+      "name": "HDFC",
+      "cardType": "Visa",
+      "cardNumber": "4376 5573 7894 3543",
+      "isBlocked": false
+    },
+    {
+      "id": 2,
+      "name": "ICICI",
+      "cardType": "Visa",
+      "cardNumber": "4376 5573 7894 3342",
+      "isBlocked": false
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -72,8 +72,4 @@ export default {
     width: 100%;
     border-radius: 8px;
   }
-  /* .empty-block {
-    height: 8rem;
-    background: linear-gradient(#80bfff, #fff);
-  } */
 </style>

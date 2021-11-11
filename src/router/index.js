@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import BuyPlans from '@/views/BuyPlans.vue'
-import Dashboard from '@/views/Dashboard'
+import Dashboard from '@/views/AppDashboard.vue'
 import PaymentOption from '@/views/PaymentOption.vue'
 
 Vue.use(VueRouter)

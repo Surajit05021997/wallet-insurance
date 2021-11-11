@@ -15,7 +15,7 @@
             <input type="checkbox">
             <label>Remember username</label>
           </div>
-          <button class="btn"><strong>LOGIN</strong></button>
+          <router-link class="btn" :to="{ name: 'Dashboard'}">LOGIN</router-link>
         </form>
       </div>
     </div>
