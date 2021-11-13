@@ -20,20 +20,31 @@
               <input type="email" v-model="email" @input="validateEmail">
               <p class="invalid" v-if="!isValidEmail">Enter your email</p>
             </div>
+            <div class="terms-conditions">
+              <input type="checkbox" v-model="termsChecked">
+              <label>Agree Terms & Conditions</label>
+            </div>
           </div>
           <button class="btn"><strong>Continue to payment</strong></button>
           <!-- <router-link class="btn" :to="{ name: 'PaymentOption'}"><strong>Continue to payment</strong></router-link> -->
         </form>
         <div class="summery-display">
-          <p>
-            <strong>Plan:</strong> <span>{{$route.params.type}}</span>
+          <p class="plan-type">
+            {{$route.params.type}} plan
           </p>
-          <p v-if="$route.params.type === 'platinum'">
-            <strong>Cost:</strong> 2100
+          <p class="plan-price">
+            <span>Plan Price </span>
+            <span v-if="$route.params.type === 'platinum'"><strong>INR 2100</strong></span>
+            <span v-if="$route.params.type === 'gold'"><strong>INR 205</strong></span>
           </p>
-          <p v-if="$route.params.type === 'gold'">
-            <strong>Cost:</strong> 205
-          </p>
+          <p>Inclusive of all taxes</p>
+          <a href="#">Apply discount coupon</a>
+          <hr>
+          <div class="plan-price">
+            <p>Amount to be paid </p>
+            <span v-if="$route.params.type === 'platinum'"><strong>INR 2100</strong></span>
+            <span v-if="$route.params.type === 'gold'"><strong>INR 205</strong></span> 
+          </div>
         </div>
       </div>
     </div>
@@ -48,6 +59,7 @@ export default {
       name: '',
       number: '',
       email: '',
+      termsChecked: false,
       isValidName: true,
       isValidNumber: true,
       isValidEmail: true,
@@ -58,13 +70,14 @@ export default {
       this.validateName();
       this.validateNumber();
       this.validateEmail();
-      if(this.isValidName && this.isValidNumber && this.isValidEmail) {
+      if(this.isValidName && this.isValidNumber && this.isValidEmail && this.termsChecked) {
         this.$router.push({
       name: 'PaymentOption',
       params: {
         name: this.name,
         number: this.number,
         email: this.email,
+        type: this.$route.params.type,
       }
     });
       }
@@ -89,8 +102,8 @@ export default {
       } else {
         this.isValidEmail = false;
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -115,7 +128,7 @@ export default {
 }
 label {
   font-size: 2rem;
-  padding: 0.5rem 0;
+  padding-top: 0.5rem;
 }
 .field-box {
   padding: 2rem;
@@ -131,7 +144,12 @@ label {
   flex-direction: column;
 }
 input {
-  font-size: 2rem;
+  font-size: 1.6rem;
+  border: none;
+  border-left: 4px solid #007fff;
+  border-radius: 2px;
+  background-color: #eee;
+  padding-left: 5px;
 }
 .btn {
     background-color: #007fff;
@@ -153,15 +171,48 @@ input {
   .summery-display {
     box-shadow: 0 0 10px 0 #ddd;
     padding: 2rem;
+    border-radius: 5px;
   }
-  .summery-display p {
-    font-size: 2rem;
-  }
-  .summery-display p span {
+  .summery-display .plan-type {
     text-transform: capitalize;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  .summery-display .plan-price {
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+  .summery-display a {
+    font-size: 1.5rem;
+    text-decoration: none;
   }
   .invalid {
     color: red;
     font-size: 1.5rem;
+  }
+  .terms-conditions {
+    display: flex;
+    align-items: center;
+  }
+  .terms-conditions label {
+    font-size: 1.5rem;
+    padding-top: 0;
+    padding-left: 1.5rem;
+  }
+
+  @media  screen and (max-width: 992px) {
+    .box {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+    }
+    .summery-display {
+      order: 1;
+    }
+    .box form {
+      order: 2;
+    }
   }
 </style>

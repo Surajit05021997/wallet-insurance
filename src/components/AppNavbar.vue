@@ -6,24 +6,34 @@
       <div class="right-nav" v-if="!isLoggedIn">
         <!-- <div class="right-nav"> -->
           <router-link :to="{ name: 'Home'}">Home</router-link>
-          <a href="#service">Service</a>
-          <a href="#plans">Plans</a>
-          <a href="#">Contact</a>
+          <a href="#service" v-if="$route.path === '/'">Service</a>
+          <a href="#plans" v-if="$route.path === '/'">Plans</a>
+          <a href="#contact-us" v-if="$route.path === '/'">Contact</a>
         <!-- </div> -->
         <router-link class="login-btn" :to="{ name: 'Login'}"><strong>Login</strong></router-link>
+      </div>
+      <div v-if="isLoggedIn">
+        <a class="logout-btn" @click="logout"><strong>Logout</strong></a>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'AppNavbar',
   computed: {
     ...mapState(['isLoggedIn']),
   },
+  methods: {
+    ...mapActions(['setLoginStatusAction']),
+    logout() {
+      this.setLoginStatusAction(false);
+      this.$router.push({ name: 'Home' });
+    }
+  }
 }
 </script>
 
@@ -63,7 +73,7 @@ export default {
     font-size: 2rem;
   }
 
-  .login-btn:link, .login-btn:visited {
+  .login-btn:link, .login-btn:visited, .logout-btn:link, .logout-btn:visited, .btn {
     font-size: 2rem;
     font-weight:500;
     color: #333;
@@ -75,7 +85,7 @@ export default {
     transition: all 0.3s;
   }
 
-  .login-btn:hover, .login-btn:active {
+  .login-btn:hover, .login-btn:active, .logout-btn:hover, .logout-btn:active, .btn:hover {
     cursor: pointer;
     box-shadow: inset 0 0 0 0.2rem #007fff;
     background-color: #007fff;
