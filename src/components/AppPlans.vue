@@ -1,49 +1,36 @@
 <template>
   <section id="plans" class="app-plans">
     <div class="container">
-      <h2>Our Plans</h2>
+      <h2 class="heading">Our Plans</h2>
       <div class="plans">
         <div class="plan best-plan">
-          <p class="plan-type">Gold</p>
-          <p class="plan-price">1999 INR <span>/ Month</span></p>
+          <p class="plan-type">Platinum</p>
+          <p class="plan-price">2100 INR <span>/ Month</span></p>
           <ul>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum dolor.</li>
+            <li>All Credit/Debits card blocking</li>
+            <li>All Identity cards replacement</li>
+            <li>Travel Coverage : Hotel Bill payment</li>
+            <li>Travel Coverage : Ticket booking</li>
+            <li>Travel Coverage : Cash arrangements</li>
+          </ul>
+          <router-link
+            :to="{ name: 'BuyPlans', params: { type: 'platinum' } }"
+            class="btn"
+            ><strong>Buy Now</strong></router-link
+          >
+        </div>
+        <div class="plan">
+          <p class="plan-type">Gold</p>
+          <p class="plan-price">205 INR <span>/ Month</span></p>
+          <ul>
+            <li>All Credit/Debits card blocking</li>
+            <li>All Identity cards replacement</li>
+            <li>Travel Assistance : Hotel Bill payment</li>
+            <li>Travel Assistance : Ticket booking</li>
+            <li>Travel Assistance : Cash arrangements</li>
           </ul>
           <router-link
             :to="{ name: 'BuyPlans', params: { type: 'gold' } }"
-            class="btn"
-            ><strong>Buy Now</strong></router-link
-          >
-        </div>
-        <div class="plan">
-          <p class="plan-type">Silver</p>
-          <p class="plan-price">1599 INR <span>/ Month</span></p>
-          <ul>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum dolor.</li>
-          </ul>
-          <router-link
-            :to="{ name: 'BuyPlans', params: { type: 'silver' } }"
-            class="btn"
-            ><strong>Buy Now</strong></router-link
-          >
-        </div>
-        <div class="plan">
-          <p class="plan-type">Bronze</p>
-          <p class="plan-price">1199 INR <span>/ Month</span></p>
-          <ul>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum dolor.</li>
-          </ul>
-          <router-link
-            :to="{ name: 'BuyPlans', params: { type: 'bronze' } }"
             class="btn"
             ><strong>Buy Now</strong></router-link
           >
@@ -68,6 +55,7 @@ export default {};
 .plans {
   display: flex;
   justify-content: center;
+  padding: 2rem 0;
   gap: 5rem;
 }
 .plan {
@@ -83,10 +71,31 @@ export default {};
   background-color: #007fff;
   color: #fff;
 }
-.app-plans h2 {
-  font-size: 4.5rem;
-  margin-bottom: 2rem;
-}
+.heading {
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .heading::before {
+    content: "";
+    width:5rem;
+    height: 0;
+    border: 2px solid #2c3e50;
+    background-color: #2c3e50;
+    display: flex;
+    margin: auto 0;
+  }
+  .heading::after {
+    content: "";
+    width:5rem;
+    height: 0;
+    border: 2px solid #2c3e50;
+    background-color: #2c3e50;
+    display: flex;
+    margin: auto 0;
+  }
 .plan-type {
   font-size: 3rem;
   font-weight: 500;

@@ -1,11 +1,12 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <router-link class="logo" :to="{ name: 'Home'}">Wallet-Insurance</router-link>
-      <div class="right-nav">
+      <router-link v-if="!isLoggedIn" class="logo" :to="{ name: 'Home' }">Wallet-Insurance</router-link>
+      <router-link v-if="isLoggedIn" class="logo" :to="{ name: 'Dashboard' }">Wallet-Insurance</router-link>
+      <div class="right-nav" v-if="!isLoggedIn">
         <!-- <div class="right-nav"> -->
-          <a href="#">Home</a>
-          <a href="#">Service</a>
+          <router-link :to="{ name: 'Home'}">Home</router-link>
+          <a href="#service">Service</a>
           <a href="#plans">Plans</a>
           <a href="#">Contact</a>
         <!-- </div> -->
@@ -16,8 +17,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  
+  name: 'AppNavbar',
+  computed: {
+    ...mapState(['isLoggedIn']),
+  },
 }
 </script>
 

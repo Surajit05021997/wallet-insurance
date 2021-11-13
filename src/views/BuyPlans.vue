@@ -3,29 +3,36 @@
     <div class="container">
       <p class="des">Enter your details</p>
       <div class="box">
-        <form>
+        <form @submit.prevent="validate">
           <div class="field-box">
-            <label>Name</label>
-            <input type="text">
-            <label>Mobile Number</label>
-            <input type="text">
-            <label>Email</label>
-            <input type="email">
+            <div class="field">
+              <label>Name</label>
+              <input type="text" v-model="name" @input="validateName">
+              <p class="invalid" v-if="!isValidName">Enter your name</p>
+            </div>
+            <div class="field">
+              <label>Mobile Number</label>
+              <input type="text" v-model="number" @input="validateNumber">
+              <p class="invalid" v-if="!isValidNumber">Enter your mobile number</p>
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" v-model="email" @input="validateEmail">
+              <p class="invalid" v-if="!isValidEmail">Enter your email</p>
+            </div>
           </div>
-          <router-link class="btn" :to="{ name: 'PaymentOption'}"><strong>Continue to payment</strong></router-link>
+          <button class="btn"><strong>Continue to payment</strong></button>
+          <!-- <router-link class="btn" :to="{ name: 'PaymentOption'}"><strong>Continue to payment</strong></router-link> -->
         </form>
         <div class="summery-display">
           <p>
             <strong>Plan:</strong> <span>{{$route.params.type}}</span>
           </p>
+          <p v-if="$route.params.type === 'platinum'">
+            <strong>Cost:</strong> 2100
+          </p>
           <p v-if="$route.params.type === 'gold'">
-            <strong>Cost:</strong> 1999
-          </p>
-          <p v-if="$route.params.type === 'silver'">
-            <strong>Cost:</strong> 1499
-          </p>
-          <p v-if="$route.params.type === 'bronze'">
-            <strong>Cost:</strong> 1199
+            <strong>Cost:</strong> 205
           </p>
         </div>
       </div>
@@ -36,6 +43,54 @@
 <script>
 export default {
   name: 'BuyPlans',
+  data() {
+    return {
+      name: '',
+      number: '',
+      email: '',
+      isValidName: true,
+      isValidNumber: true,
+      isValidEmail: true,
+    }
+  },
+  methods: {
+    validate() {
+      this.validateName();
+      this.validateNumber();
+      this.validateEmail();
+      if(this.isValidName && this.isValidNumber && this.isValidEmail) {
+        this.$router.push({
+      name: 'PaymentOption',
+      params: {
+        name: this.name,
+        number: this.number,
+        email: this.email,
+      }
+    });
+      }
+    },
+    validateName() {
+      if(this.name.length) {
+        this.isValidName = true;
+      } else {
+        this.isValidName = false;
+      }
+    },
+    validateNumber() {
+      if(this.number.length) {
+        this.isValidNumber = true;
+      } else {
+        this.isValidNumber = false;
+      }
+    },
+    validateEmail() {
+      if(this.email.length) {
+        this.isValidEmail = true;
+      } else {
+        this.isValidEmail = false;
+      }
+    }
+  }
 }
 </script>
 
@@ -60,6 +115,7 @@ export default {
 }
 label {
   font-size: 2rem;
+  padding: 0.5rem 0;
 }
 .field-box {
   padding: 2rem;
@@ -70,8 +126,12 @@ label {
   grid-template-columns: 100%;
   row-gap: 2rem;
 }
+.field {
+  display: flex;
+  flex-direction: column;
+}
 input {
-  font-size: 30px;
+  font-size: 2rem;
 }
 .btn {
     background-color: #007fff;
@@ -99,5 +159,9 @@ input {
   }
   .summery-display p span {
     text-transform: capitalize;
+  }
+  .invalid {
+    color: red;
+    font-size: 1.5rem;
   }
 </style>

@@ -4,7 +4,7 @@
       <div></div>
       <div class="profile-card">
         <img src="../assets/user-1.jpg" alt="Profile picture" class="profile-img">
-        <p class="profile-name">John Doe</p>
+        <p class="profile-name">{{customerDetails.name}}</p>
         <p class="profile-number">+91 1234567890</p>
       </div>
     </div>
@@ -12,8 +12,18 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
-  
+  name: 'Dashboard',
+  computed: {
+    ...mapState(['customerDetails', 'loggedInUser']),
+  },
+  created() {
+    this.getCustomerDetailsAction(this.loggedInUser);
+  },
+  methods: {
+    ...mapActions(['getCustomerDetailsAction']),
+  }
 }
 </script>
 

@@ -1,14 +1,25 @@
 {
   "customers": [
     {
-      "name": "Anusha",
-      "emailId": "anusha@gmail.com",
-      "mobileNum": 9553805468
+      "name": "Surajit Maity",
+      "number": "09083495694",
+      "email": "surajitmaity@gmail.com",
+      "username": "SurajitMaity",
+      "password": "abcde"
     },
     {
-      "name": "Surajit",
-      "emailId": "surajit@gmail.com",
-      "mobileNum": 9553546756
+      "name": "Anusha",
+      "number": "09083495694",
+      "email": "anusha@gmail.com",
+      "username": "Anusha",
+      "password": "anusha123"
+    },
+    {
+      "name": "John Doe",
+      "number": "09083495694",
+      "email": "johndoe@gmail.com",
+      "username": "JohnDoe",
+      "password": "12345"
     }
   ],
   "banks": [

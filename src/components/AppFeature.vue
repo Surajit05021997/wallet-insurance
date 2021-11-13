@@ -1,7 +1,7 @@
 <template>
-  <section class="app-feature">
+  <section class="app-feature" id="service">
     <div class="container">
-      <h2>What we provide</h2>
+      <h2 class="heading">What we provide</h2>
       <div class="feature">
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -10,13 +10,13 @@
         </div>
         <div class="feature-description">
           <h3>Card Protection</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni officia explicabo dolor odio! Temporibus, vero maiores. Accusantium asperiores adipisci officia maxime aliquid fugit cumque aut tempore ipsum deleniti laudantium, libero iste sed.</p>
+          <p>In case of wallet theft/card fraud, get you cards blocked in just a tap on our App or call toll-free number. All Credit/Debit cards that you currently have and you get in future are protected during your membership. All the identify cards can also be replaced.</p>
         </div>
       </div>
       <div class="feature">
         <div class="feature-description">
-          <h3>SIM Protection</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni officia explicabo dolor odio! Temporibus, vero maiores. Accusantium asperiores adipisci officia maxime aliquid fugit cumque aut tempore ipsum deleniti laudantium, libero iste sed.</p>
+          <h3>Travel Assistance & Coverage</h3>
+          <p>Incase of the Wallet theft/loosing/card fraud in traveling, Bank can provide travel assistance in this case including the hotel bill payments, booking your tickets and cash arrangement.</p>
         </div>
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -32,7 +32,7 @@
         </div>
         <div class="feature-description">
           <h3>24/7 Chat Support</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni officia explicabo dolor odio! Temporibus, vero maiores. Accusantium asperiores adipisci officia maxime aliquid fugit cumque aut tempore ipsum deleniti laudantium, libero iste sed.</p>
+          <p>With wallet protection, you can report loss of payments cards and other wallet essentials by calling on customer care number and also chat. This service which is available 24x7 lets you block all your credit & debit cards with one just call and click via portal, eliminating the need for you to visit each bank individually to get cards blocked.</p>
         </div>
       </div>
     </div>
@@ -53,9 +53,30 @@ export default {
   .app-feature {
     padding: 2rem;
   }
-  .app-feature h2 {
+  .heading {
     font-size: 4.5rem;
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .heading::before {
+    content: "";
+    width:5rem;
+    height: 0;
+    border: 2px solid #2c3e50;
+    background-color: #2c3e50;
+    display: flex;
+    margin: auto 0;
+  }
+  .heading::after {
+    content: "";
+    width:5rem;
+    height: 0;
+    border: 2px solid #2c3e50;
+    background-color: #2c3e50;
+    display: flex;
+    margin: auto 0;
   }
   .feature {
     padding: 2rem;

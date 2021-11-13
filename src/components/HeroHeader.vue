@@ -3,8 +3,8 @@
     <section class="hero-header">
       <div class="container">
         <div class="hero-text-box">
-          <h1>Lorem, ipsum.</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis animi dolor illo, rerum nisi aut. Odit a recusandae minima molestiae!</p>
+          <h1>Secure your wallet.</h1>
+          <p>Wallet theft & loosing your wallet can be very stressful. A wallet protection plan offered by bank could be very helpful in such emergency situations, by providing you with the necessary financial  support at the time.</p>
           <a href="#plans" class="btn"><strong>Protect your wallect</strong></a>
         </div>
         <div class="hero-img-box">

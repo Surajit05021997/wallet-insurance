@@ -6,7 +6,7 @@
           <p>Credit or Debit Card</p>
         </div>
         <div :class="visible_1 ? 'viisible' : 'not-visible'">
-          <form>
+          <form @submit.prevent="addCustomer">
             <div class="field">
               <label>Card Number</label>
               <input type="text" />
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex' 
 export default {
   data() {
     return {
@@ -71,6 +72,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['addCustomerAction']),
     toggle(option) {
       if (option === 1) {
         this.visible_1 = !this.visible_1;
@@ -86,6 +88,9 @@ export default {
         this.visible_2 = false;
       }
     },
+    addCustomer() {
+      this.addCustomerAction(this.$route.params);
+    }
   },
 };
 </script>

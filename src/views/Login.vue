@@ -8,14 +8,15 @@
       </div>
       <div class="login-field">
         <p class="field-des">Login Account</p>
-        <form class="login-form">
-          <input type="text" placeholder="Username">
-          <input type="password" placeholder="Password">
+        <form class="login-form" @submit.prevent="authenticate">
+          <p class="invalid" v-if="isInvalid">Your username or password is incorrecct.</p>
+          <input type="text" placeholder="Username" v-model="username">
+          <input type="password" placeholder="Password" v-model="password">
           <div class="remember-user">
             <input type="checkbox">
             <label>Remember username</label>
           </div>
-          <router-link class="btn" :to="{ name: 'Dashboard'}">LOGIN</router-link>
+          <button class="btn">LOGIN</button>
         </form>
       </div>
     </div>
@@ -23,8 +24,39 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { getCustomerService } from '@/service/service.js'
+
 export default {
-  
+  name: 'Login',
+  data() {
+    return {
+      username: '',
+      password: '',
+      isInvalid: false,
+    }
+  },
+  methods: {
+    ...mapActions(['setLoginStatusAction', 'setLoggedInUserAction']),
+    async authenticate() {
+      const customerList = await getCustomerService();
+      const requiredCustomer = customerList.find(element => element.username === this.username);
+      if(requiredCustomer && requiredCustomer.password === this.password) {
+        this.setLoginStatusAction(true);
+        this.setLoggedInUserAction(this.username);
+        this.$router.push({
+          name: 'Dashboard',
+          params: {
+            username: this.username,
+          }
+        });
+      } else {
+        this.isInvalid = true;
+      }
+      this.username = '';
+      this.password = '';
+    }
+  }
 }
 </script>
 
@@ -114,6 +146,10 @@ export default {
     background-color: #fff;
     color: #000;
     box-shadow: inset 0 0 0 0.2rem #007fff;
+  }
+  .invalid {
+    color: red;
+    font-size: 1.5rem;
   }
 @media screen and (max-width: 768px) {
   .login-card {
