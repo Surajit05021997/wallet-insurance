@@ -37,7 +37,8 @@
                 v-model="cardNumber"
                 @input="validateCardNumber"
               />
-              <p class="invalid" v-if="!isCardNumberValid">Enter card number</p>
+              <p class="invalid" v-if="isEmptyCardNumber">Enter card number</p>
+              <p class="invalid" v-if="!isCardNumberValid">Enter valid card number</p>
             </div>
             <div class="field">
               <label>Name On Card</label>
@@ -52,12 +53,14 @@
                 v-model="expiry"
                 @input="validateExpiry"
               />
-              <p class="invalid" v-if="!isExpiryValid">Enter expiry date</p>
+              <p class="invalid" v-if="isEmptyExpiry">Enter expiry date</p>
+              <p class="invalid" v-if="!isExpiryValid">Enter valid expiry date</p>
             </div>
             <div class="field">
               <label>CVV</label>
               <input type="text" v-model="cvv" @input="validateCvv" />
-              <p class="invalid" v-if="!isCvvValid">Enter CVV</p>
+              <p class="invalid" v-if="isEmptyCvv">Enter CVV</p>
+              <p class="invalid" v-if="!isCvvValid">Enter valid CVV</p>
             </div>
             <button class="btn">Make Payment</button>
           </form>
@@ -127,6 +130,7 @@
 </template>
 
 <script>
+// import { addCustomerService } from '@/service/service.js';
 import { mapActions } from "vuex";
 export default {
   data() {
@@ -140,9 +144,12 @@ export default {
       visible_2: false,
       visible_3: false,
       isCardNumberValid: true,
+      isEmptyCardNumber: false,
       isNameValid: true,
       isExpiryValid: true,
+      isEmptyExpiry: false,
       isCvvValid: true,
+      isEmptyCvv: false,
       isbankSelectedValid: true,
       isModalVisible: false,
     };
@@ -176,8 +183,10 @@ export default {
         this.isCvvValid
       ) {
         this.isModalVisible = true;
+        // addCustomerService({
+        //   name: 'fdsfs',
+        // });
       }
-      // this.addCustomer();
     },
     validatePayment() {
       this.validateBank();
@@ -187,30 +196,52 @@ export default {
     },
     validateCardNumber() {
       if (this.cardNumber) {
-        return (this.isCardNumberValid = true);
+        this.isEmptyCardNumber = false;
+        const regex = /^[0-9]{16}$/;
+        if(regex.test(this.cardNumber)) {
+          this.isCardNumberValid = true;
+        } else {
+          this.isCardNumberValid = false;
+        }
       } else {
-        return (this.isCardNumberValid = false);
+        this.isEmptyCardNumber = true;
+        this.isCardNumberValid = true
       }
     },
     validateName() {
       if (this.name) {
-        return (this.isNameValid = true);
+        this.isNameValid = true;
       } else {
-        return (this.isNameValid = false);
+        this.isNameValid = false;
       }
     },
     validateExpiry() {
       if (this.expiry) {
-        return (this.isExpiryValid = true);
+        this.isEmptyExpiry = false;
+        const regex_1 = /^0[1-9]\/[0-9]{2}$/;
+        const regex_2 = /^1[0-2]\/[0-9]{2}$/;
+        if(regex_1.test(this.expiry) || regex_2.test(this.expiry)) {
+          this.isExpiryValid = true;
+        } else {
+          this.isExpiryValid = false;
+        }
       } else {
-        return (this.isExpiryValid = false);
+        this.isEmptyExpiry = true;
+        this.isExpiryValid = true
       }
     },
     validateCvv() {
       if (this.cvv) {
-        return (this.isCvvValid = true);
+        this.isEmptyCvv = false;
+        const regex = /^[0-9]{3}$/;
+        if(regex.test(this.cvv)) {
+          this.isCvvValid = true;
+        } else {
+          this.isCvvValid = false;
+        }
       } else {
-        return (this.isCvvValid = false);
+        this.isEmptyCvv = true;
+        this.isCvvValid = true
       }
     },
     validateBank() {
@@ -345,6 +376,7 @@ export default {
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
+  z-index: 10;
 }
 .modal-visible {
   visibility: visible;

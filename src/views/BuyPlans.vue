@@ -13,7 +13,8 @@
             <div class="field">
               <label>Mobile Number</label>
               <input type="text" v-model="number" @input="validateNumber">
-              <p class="invalid" v-if="!isValidNumber">Enter your mobile number</p>
+              <p class="invalid" v-if="isEmptyNumber">Enter your mobile number</p>
+              <p class="invalid" v-if="!isValidNumber">Enter correct mobile number</p>
             </div>
             <div class="field">
               <label>Email</label>
@@ -65,6 +66,7 @@ export default {
       termsChecked: false,
       validTerms: true,
       isValidName: true,
+      isEmptyNumber: false,
       isValidNumber: true,
       isValidEmail: true,
     }
@@ -96,9 +98,16 @@ export default {
     },
     validateNumber() {
       if(this.number.length) {
-        this.isValidNumber = true;
+        this.isEmptyNumber = false;
+        const regex = /^[0-9]{10}$/;
+        if(regex.test(this.number)){
+          this.isValidNumber = true;
+        } else {
+          this.isValidNumber = false;
+        }
       } else {
-        this.isValidNumber = false;
+        this.isEmptyNumber = true;
+        this.isValidNumber = true;
       }
     },
     validateEmail() {

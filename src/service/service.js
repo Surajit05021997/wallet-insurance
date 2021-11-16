@@ -11,8 +11,9 @@ async function getCustomerService() {
 }
 
 function addCustomerService(customer) {
+  console.log(customer);
   try {
-    axios.put('http://localhost:3001/customers', customer)
+    axios.post('http://localhost:3001/customers', customer);
   } catch(error) {
     console.log(error);
   }
