@@ -1,20 +1,38 @@
 <template>
   <div id="app">
-    <app-navbar></app-navbar>
-    <router-view></router-view>
+    <div class="container-fluid">
+      <div style="position: sticky; top:0;background: #fff; z-index:5">
+        <app-navbar></app-navbar><hr>
+    </div>
+    <div class="row">
+      <div v-if="isLoggedIn" class="col-lg-2 col-md-2">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div :class="{ 'col-lg-10 col-md-10': isLoggedIn }">
+        <router-view></router-view>
+      </div>
+    </div>
     <app-footer></app-footer>
+    
+    </div>
   </div>
 </template>
 
 <script>
 import AppNavbar from '@/components/AppNavbar.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import AppSidebar from './views/AppSidebar.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
   components: {
     AppNavbar,
-    AppFooter
+    AppFooter,
+    AppSidebar
+  },
+  computed: {
+    ...mapState(['isLoggedIn']),
   }
 }
 </script>

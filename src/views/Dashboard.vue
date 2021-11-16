@@ -19,23 +19,18 @@
       <div v-if="this.selectedDashboardMenu==='Lost Wallet Records'">
         <lost-wallet-records></lost-wallet-records>
       </div>
-      <div v-if="this.selectedDashboardMenu==='Policy Details'">
-        <policy-details></policy-details>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import LostWalletRecords from '@/components/LostWalletRecords.vue';
-import PolicyDetails from '@/components/PolicyDetails.vue';
 import ClaimsStatus from '@/components/ClaimsStatus.vue';
 
 export default {
   name: 'Dashboard',
   components : { 
     LostWalletRecords,
-    PolicyDetails,
     ClaimsStatus
     },
   data(){

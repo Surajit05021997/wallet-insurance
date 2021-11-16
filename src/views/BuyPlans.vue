@@ -22,7 +22,10 @@
             </div>
             <div class="terms-conditions">
               <input type="checkbox" v-model="termsChecked">
-              <label>Agree Terms & Conditions</label>
+              <div class="field">
+                <label>I agree to the <a href="@\assets\SamplePDF.pdf" download="Terms and Conditions">Terms & Conditions</a></label>
+                <p :class="{ 'invalid': !validTerms, 'hidden': validTerms }">Please check the terms and conditions.</p>
+              </div>
             </div>
           </div>
           <button class="btn"><strong>Continue to payment</strong></button>
@@ -30,20 +33,20 @@
         </form>
         <div class="summery-display">
           <p class="plan-type">
-            {{$route.params.type}} plan
+            Wallet Protection : {{$route.params.type}} plan
           </p>
           <p class="plan-price">
             <span>Plan Price </span>
-            <span v-if="$route.params.type === 'platinum'"><strong>INR 2100</strong></span>
-            <span v-if="$route.params.type === 'gold'"><strong>INR 205</strong></span>
+            <span v-if="$route.params.type === 'platinum'"><strong>Rs. 24000 /year</strong></span>
+            <span v-if="$route.params.type === 'gold'"><strong>Rs. 2100 /year</strong></span>
           </p>
           <p>Inclusive of all taxes</p>
           <a href="#">Apply discount coupon</a>
           <hr>
           <div class="plan-price">
             <p>Amount to be paid </p>
-            <span v-if="$route.params.type === 'platinum'"><strong>INR 2100</strong></span>
-            <span v-if="$route.params.type === 'gold'"><strong>INR 205</strong></span> 
+            <span v-if="$route.params.type === 'platinum'"><strong>Rs. 24000</strong></span>
+            <span v-if="$route.params.type === 'gold'"><strong>Rs. 2100</strong></span>
           </div>
         </div>
       </div>
@@ -60,6 +63,7 @@ export default {
       number: '',
       email: '',
       termsChecked: false,
+      validTerms: true,
       isValidName: true,
       isValidNumber: true,
       isValidEmail: true,
@@ -70,6 +74,7 @@ export default {
       this.validateName();
       this.validateNumber();
       this.validateEmail();
+      this.validateTerms();
       if(this.isValidName && this.isValidNumber && this.isValidEmail && this.termsChecked) {
         this.$router.push({
       name: 'PaymentOption',
@@ -102,6 +107,18 @@ export default {
       } else {
         this.isValidEmail = false;
       }
+    },
+    validateTerms() {
+      if(this.termsChecked) {
+        this.validTerms = true;
+      } else {
+        this.validTerms = false;
+      }
+    },
+  },
+  watch: {
+    termsChecked() {
+      this.validateTerms();
     },
   },
 }
@@ -200,6 +217,16 @@ input {
     font-size: 1.5rem;
     padding-top: 0;
     padding-left: 1.5rem;
+  }
+  .terms-conditions a {
+    text-decoration: none;
+  }
+  .terms-conditions p {
+    margin-bottom: 0;
+    margin-left: 1.5rem;
+  }
+  .hidden {
+    display: none;
   }
 
   @media  screen and (max-width: 992px) {

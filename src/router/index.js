@@ -5,6 +5,9 @@ import Login from '@/views/Login.vue'
 import BuyPlans from '@/views/BuyPlans.vue'
 import Dashboard from '@/views/AppDashboard.vue'
 import PaymentOption from '@/views/PaymentOption.vue'
+import RegisteredCards from '@/views/RegisteredCards.vue'
+import LostWalletRecords from '@/views/LostWalletRecords.vue'
+import PolicyDetails from '@/views/PolicyDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -33,7 +36,22 @@ const routes = [
     path: '/paymentOption',
     name:'PaymentOption',
     component: PaymentOption,
-  }
+  },
+  {
+    path: '/registeredCards',
+    name:'RegisteredCards',
+    component: RegisteredCards,
+  },
+  {
+    path: '/lostWalletRecords',
+    name:'LostWalletRecords',
+    component: LostWalletRecords,
+  },
+  {
+    path: '/policyDetails',
+    name:'PolicyDetails',
+    component: PolicyDetails,
+  },
 ]
 
 const router = new VueRouter({

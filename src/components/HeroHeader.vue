@@ -72,4 +72,17 @@ export default {
     width: 100%;
     border-radius: 8px;
   }
+  @media screen and (max-width: 992px) {
+    .container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+    }
+    .hero-text-box {
+      order: 2;
+    }
+    .hero-img-box {
+      order: 1;
+      margin: 0 20%;
+    }
+  }
 </style>

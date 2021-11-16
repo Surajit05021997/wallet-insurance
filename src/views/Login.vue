@@ -41,6 +41,7 @@ export default {
     async authenticate() {
       const customerList = await getCustomerService();
       const requiredCustomer = customerList.find(element => element.username === this.username);
+      console.log(this.password);
       if(requiredCustomer && requiredCustomer.password === this.password) {
         this.setLoginStatusAction(true);
         this.setLoggedInUserAction(this.username);

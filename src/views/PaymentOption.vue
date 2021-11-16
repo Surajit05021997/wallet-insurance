@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="summery-display">
-      <p class="plan-type">{{ $route.params.type }} plan</p>
+      <p class="plan-type">Wallet Protection : {{ $route.params.type }} plan</p>
       <p class="plan-price">
         <span>Plan Price </span>
         <span v-if="$route.params.type === 'platinum'"
-          ><strong>INR 2100</strong></span
+          ><strong>Rs. 24000 /year</strong></span
         >
         <span v-if="$route.params.type === 'gold'"
-          ><strong>INR 205</strong></span
+          ><strong>Rs. 2100 /year</strong></span
         >
       </p>
       <p>Inclusive of all taxes</p>
@@ -16,10 +16,10 @@
       <div class="plan-price">
         <p>Amount to be paid</p>
         <span v-if="$route.params.type === 'platinum'"
-          ><strong>INR 2100</strong></span
+          ><strong>Rs. 24000</strong></span
         >
         <span v-if="$route.params.type === 'gold'"
-          ><strong>INR 205</strong></span
+          ><strong>Rs. 2100</strong></span
         >
       </div>
     </div>
@@ -105,6 +105,7 @@
         <h2>Your payment was successful.</h2>
         <a class="close" href="#" @click="closeModal">&times;</a>
         <div class="content">
+          <p>Please check your mail for login credentials.</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="payment-successful"
@@ -367,7 +368,7 @@ export default {
 }
 .popup .close {
   position: absolute;
-  top: 20px;
+  top: 12px;
   right: 30px;
   transition: all 200ms;
   font-size: 30px;
@@ -380,10 +381,16 @@ export default {
 }
 .popup .content {
   max-height: 30%;
+  margin: 2rem 0;
   overflow: auto;
   display: flex;
+  gap: 2rem;
   align-items: center;
   justify-content: center;
+}
+.popup .content p {
+  margin-bottom: 0;
+  font-size: 1.5rem;
 }
 .payment-successful {
   width: 5rem;

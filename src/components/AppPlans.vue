@@ -4,8 +4,10 @@
       <h2 class="heading">Our Plans</h2>
       <div class="plans">
         <div class="plan best-plan">
-          <p class="plan-type">Platinum</p>
-          <p class="plan-price">2100 INR <span>/ Month</span></p>
+          <p class="plan-type">Wallet Protection : Platinum</p>
+          <p class="plan-price">Rs. 24000* <span>only/Year</span></p>
+          <p class="s-fs mb-0">Including all taxes</p>
+          <p class="m-fs">(an affordable 2100/month)</p>
           <ul>
             <li>All Credit/Debits card blocking</li>
             <li>All Identity cards replacement</li>
@@ -13,6 +15,7 @@
             <li>Travel Coverage : Ticket booking</li>
             <li>Travel Coverage : Cash arrangements</li>
           </ul>
+          <p class="s-fs">* Premium can be varied based on the customer location & details</p>
           <router-link
             :to="{ name: 'BuyPlans', params: { type: 'platinum' } }"
             class="btn"
@@ -20,8 +23,10 @@
           >
         </div>
         <div class="plan">
-          <p class="plan-type">Gold</p>
-          <p class="plan-price">205 INR <span>/ Month</span></p>
+          <p class="plan-type">Wallet Protection : Gold</p>
+          <p class="plan-price">Rs. 2100 <span>only/Year</span></p>
+          <p class="s-fs mb-0">Including all taxes</p>
+          <p class="m-fs">(an affordable 205/month)</p>
           <ul>
             <li>All Credit/Debits card blocking</li>
             <li>All Identity cards replacement</li>
@@ -104,7 +109,7 @@ export default {};
 .plan-price {
   font-size: 3.5rem;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 span {
   font-size: 2.5rem;
@@ -118,7 +123,8 @@ ul {
   font-size: 2rem;
 }
 ul li {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 .btn:link,
 .btn:visited {
@@ -149,5 +155,17 @@ ul li {
 .best-plan .btn:hover, .best-plan .btn:active {
   box-shadow: none;
   color: #000;
+}
+.s-fs {
+  font-size: 1.2rem;
+}
+.m-fs {
+  font-size: 1.6rem;
+}
+@media screen and (max-width: 768px) {
+  .plans {
+    flex-direction: column;
+    padding: 0 15%;
+  } 
 }
 </style>
