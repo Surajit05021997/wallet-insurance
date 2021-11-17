@@ -38,7 +38,9 @@
                 @input="validateCardNumber"
               />
               <p class="invalid" v-if="isEmptyCardNumber">Enter card number</p>
-              <p class="invalid" v-if="!isCardNumberValid">Enter valid card number</p>
+              <p class="invalid" v-if="!isCardNumberValid">
+                Enter valid card number
+              </p>
             </div>
             <div class="field">
               <label>Name On Card</label>
@@ -54,7 +56,9 @@
                 @input="validateExpiry"
               />
               <p class="invalid" v-if="isEmptyExpiry">Enter expiry date</p>
-              <p class="invalid" v-if="!isExpiryValid">Enter valid expiry date</p>
+              <p class="invalid" v-if="!isExpiryValid">
+                Enter valid expiry date
+              </p>
             </div>
             <div class="field">
               <label>CVV</label>
@@ -75,7 +79,11 @@
         <div class="upi" :class="visible_2 ? 'viisible' : 'not-visible'">
           <img src="../assets/bhim.svg" alt="bhim logo" @click="upiPayment" />
           <img src="../assets/gpay.svg" alt="gpay logo" @click="upiPayment" />
-          <img src="../assets/phonepe.svg" alt="phonepe logo" @click="upiPayment" />
+          <img
+            src="../assets/phonepe.svg"
+            alt="phonepe logo"
+            @click="upiPayment"
+          />
         </div>
       </div>
     </div>
@@ -98,7 +106,7 @@
               <option>HDFC Bank</option>
             </select>
             <p class="invalid" v-if="!isbankSelectedValid">Select bank</p>
-            <button class="btn">Make Payment</button>
+            <button type="submit" class="btn">Make Payment</button>
           </form>
         </div>
       </div>
@@ -130,7 +138,8 @@
 </template>
 
 <script>
-import { addCustomerService } from '@/service/service.js';
+import emailjs from "emailjs-com";
+import { addCustomerService } from "@/service/service.js";
 import { mapActions } from "vuex";
 export default {
   data() {
@@ -140,6 +149,9 @@ export default {
       expiry: "",
       cvv: "",
       bankSelected: "",
+      toEmail: "",
+      username: '',
+      password: '',
       visible_1: false,
       visible_2: false,
       visible_3: false,
@@ -195,30 +207,47 @@ export default {
     },
     validatePayment() {
       this.validateBank();
-      if(this.isbankSelectedValid === true) {
+      if (this.isbankSelectedValid === true) {
         this.isModalVisible = true;
+        this.username = this.generateUsername();
+        this.password = this.generatePassword();
         addCustomerService({
           name: this.$route.params.name,
           mobileNum: this.$route.params.number,
           emailId: this.$route.params.email,
           type: this.$route.params.type,
-          username: this.generateUsername(),
-          password: this.generatePassword(),
+          username: this.username,
+          password: this.password,
         });
       }
+      const tempParam = {
+        userName: this.$route.params.name,
+        toEmail: this.$route.params.email,
+        plan: this.$route.params.type,
+        username: this.username,
+        password: this.password,
+      }
+      emailjs.send('service_5cvw2qt','template_062645a',tempParam, 'user_fqh1IkfZvXU3VhM5ZYuXJ').then(
+        function () {
+          console.log("SUCCESS!");
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
     },
     validateCardNumber() {
       if (this.cardNumber) {
         this.isEmptyCardNumber = false;
         const regex = /^[0-9]{16}$/;
-        if(regex.test(this.cardNumber)) {
+        if (regex.test(this.cardNumber)) {
           this.isCardNumberValid = true;
         } else {
           this.isCardNumberValid = false;
         }
       } else {
         this.isEmptyCardNumber = true;
-        this.isCardNumberValid = true
+        this.isCardNumberValid = true;
       }
     },
     validateName() {
@@ -233,32 +262,32 @@ export default {
         this.isEmptyExpiry = false;
         const regex_1 = /^0[1-9]\/[0-9]{2}$/;
         const regex_2 = /^1[0-2]\/[0-9]{2}$/;
-        if(regex_1.test(this.expiry) || regex_2.test(this.expiry)) {
+        if (regex_1.test(this.expiry) || regex_2.test(this.expiry)) {
           this.isExpiryValid = true;
         } else {
           this.isExpiryValid = false;
         }
       } else {
         this.isEmptyExpiry = true;
-        this.isExpiryValid = true
+        this.isExpiryValid = true;
       }
     },
     validateCvv() {
       if (this.cvv) {
         this.isEmptyCvv = false;
         const regex = /^[0-9]{3}$/;
-        if(regex.test(this.cvv)) {
+        if (regex.test(this.cvv)) {
           this.isCvvValid = true;
         } else {
           this.isCvvValid = false;
         }
       } else {
         this.isEmptyCvv = true;
-        this.isCvvValid = true
+        this.isCvvValid = true;
       }
     },
     validateBank() {
-      if(this.bankSelected) {
+      if (this.bankSelected) {
         this.isbankSelectedValid = true;
       } else {
         this.isbankSelectedValid = false;
@@ -270,35 +299,37 @@ export default {
     upiPayment() {
       this.isModalVisible = true;
       addCustomerService({
-          name: this.$route.params.name,
-          mobileNum: this.$route.params.number,
-          emailId: this.$route.params.email,
-          type: this.$route.params.type,
-          username: this.generateUsername(),
-          password: this.generatePassword(),
-        });
+        name: this.$route.params.name,
+        mobileNum: this.$route.params.number,
+        emailId: this.$route.params.email,
+        type: this.$route.params.type,
+        username: this.generateUsername(),
+        password: this.generatePassword(),
+      });
     },
     closeModal() {
       this.isModalVisible = false;
       this.$router.push("/login");
     },
     generatePassword() {
-      const chars = "0123456789!@#$%^&*abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const chars =
+        "0123456789!@#$%^&*abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
       const passwordLength = 8;
       let password = "";
       for (let i = 0; i <= passwordLength; i++) {
         const randomNumber = Math.floor(Math.random() * chars.length);
-        password += chars.substring(randomNumber, randomNumber +1);
+        password += chars.substring(randomNumber, randomNumber + 1);
       }
       return password;
     },
     generateUsername() {
-      const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const chars =
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
       const usernameLength = 8;
       let username = "";
       for (let i = 0; i <= usernameLength; i++) {
         const randomNumber = Math.floor(Math.random() * chars.length);
-        username += chars.substring(randomNumber, randomNumber +1);
+        username += chars.substring(randomNumber, randomNumber + 1);
       }
       return username;
     },
@@ -306,8 +337,8 @@ export default {
   watch: {
     bankSelected() {
       this.validateBank();
-    }
-  }
+    },
+  },
 };
 </script>
 
