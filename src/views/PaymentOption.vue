@@ -130,7 +130,7 @@
 </template>
 
 <script>
-// import { addCustomerService } from '@/service/service.js';
+import { addCustomerService } from '@/service/service.js';
 import { mapActions } from "vuex";
 export default {
   data() {
@@ -183,15 +183,28 @@ export default {
         this.isCvvValid
       ) {
         this.isModalVisible = true;
-        // addCustomerService({
-        //   name: 'fdsfs',
-        // });
+        addCustomerService({
+          name: this.$route.params.name,
+          mobileNum: this.$route.params.number,
+          emailId: this.$route.params.email,
+          type: this.$route.params.type,
+          username: this.generateUsername(),
+          password: this.generatePassword(),
+        });
       }
     },
     validatePayment() {
       this.validateBank();
       if(this.isbankSelectedValid === true) {
         this.isModalVisible = true;
+        addCustomerService({
+          name: this.$route.params.name,
+          mobileNum: this.$route.params.number,
+          emailId: this.$route.params.email,
+          type: this.$route.params.type,
+          username: this.generateUsername(),
+          password: this.generatePassword(),
+        });
       }
     },
     validateCardNumber() {
@@ -256,10 +269,38 @@ export default {
     },
     upiPayment() {
       this.isModalVisible = true;
+      addCustomerService({
+          name: this.$route.params.name,
+          mobileNum: this.$route.params.number,
+          emailId: this.$route.params.email,
+          type: this.$route.params.type,
+          username: this.generateUsername(),
+          password: this.generatePassword(),
+        });
     },
     closeModal() {
       this.isModalVisible = false;
       this.$router.push("/login");
+    },
+    generatePassword() {
+      const chars = "0123456789!@#$%^&*abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const passwordLength = 8;
+      let password = "";
+      for (let i = 0; i <= passwordLength; i++) {
+        const randomNumber = Math.floor(Math.random() * chars.length);
+        password += chars.substring(randomNumber, randomNumber +1);
+      }
+      return password;
+    },
+    generateUsername() {
+      const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const usernameLength = 8;
+      let username = "";
+      for (let i = 0; i <= usernameLength; i++) {
+        const randomNumber = Math.floor(Math.random() * chars.length);
+        username += chars.substring(randomNumber, randomNumber +1);
+      }
+      return username;
     },
   },
   watch: {

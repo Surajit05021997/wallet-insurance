@@ -1,6 +1,7 @@
 {
   "customers": [
     {
+      "id": 1,
       "name": "Anusha",
       "emailId": "anusha@gmail.com",
       "mobileNum": 9553805468,
@@ -14,6 +15,7 @@
       }
     },
     {
+      "id": 2,
       "name": "Surajit",
       "emailId": "surajit@gmail.com",
       "mobileNum": 9553546756,
@@ -26,6 +28,15 @@
         "insuranceAmount": "100000",
         "mobileNum": 9553546756
       }
+    },
+    {
+      "name": "Surajit Maity",
+      "mobileNum": "0908349569",
+      "emailId": "surajitmaity12345@gmail.com",
+      "type": "platinum",
+      "username": "dKOoH4mB0",
+      "password": "PrX2SxtJ7",
+      "id": 3
     }
   ],
   "banks": [
