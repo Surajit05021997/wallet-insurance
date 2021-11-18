@@ -18,6 +18,23 @@ function addCustomerService(customer) {
   }
 }
 
+function addPreCustomer(customer) {
+  try {
+    axios.post('http://localhost:3001/preCustomer', customer);
+  } catch(error) {
+    console.log(error);
+  }
+}
+
+async function getPreCustomer() {
+  try {
+    const response = await axios.get('http://localhost:3001/preCustomer');
+    return response.data;
+  } catch(error) {
+    console.log(error);
+  }
+}
+
 async function getCustomerDetailsService(username) {
   try {
     const response = await axios.get(`http://localhost:3001/customers?username=${username}`);
@@ -27,4 +44,4 @@ async function getCustomerDetailsService(username) {
   }
 }
 
-export { getCustomerService, addCustomerService, getCustomerDetailsService }
+export { getCustomerService, addCustomerService, getCustomerDetailsService, addPreCustomer, getPreCustomer }

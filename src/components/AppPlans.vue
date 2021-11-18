@@ -5,17 +5,23 @@
       <div class="plans">
         <div class="plan best-plan">
           <p class="plan-type">Wallet Protection : Platinum</p>
-          <p class="plan-price">Rs. 24000* <span>only/Year</span></p>
+          <p class="plan-price">Rs. 2400* <span>only/Year</span></p>
           <p class="s-fs mb-0">Including all taxes</p>
-          <p class="m-fs">(an affordable 2100/month)</p>
+          <p class="m-fs">(an affordable 200/month)</p>
+          <p class="m-fs">Benefits</p>
           <ul>
-            <li>All Credit/Debits card blocking</li>
-            <li>All Identity cards replacement</li>
-            <li>Travel Coverage : Hotel Bill payment</li>
-            <li>Travel Coverage : Ticket booking</li>
-            <li>Travel Coverage : Cash arrangements</li>
+            <li>&rarr; All Credit/Debits card blocking</li>
+            <li>&rarr; All Identity cards replacement</li>
+            <li>&rarr; Travel Assistance : Hotel Bill payment*</li>
+            <li>&rarr; Travel Assistance : Ticket booking*</li>
+            <li>&rarr; Travel Assistance : Cash arrangements*</li>
+            <li>&rarr; Travel Assistance : Cards Fraud protection</li>
+            <li>&rarr; <strong>Get additional 20% discounts if you book the carbon neutral hotel or eco friendly hotels</strong></li>
           </ul>
-          <p class="s-fs">* Premium can be varied based on the customer location & details</p>
+          <p class="s-fs">
+            *Need to repay the Advance amount.<br>
+            **This offerings can only  made legal BFSI Entities.
+          </p>
           <router-link
             :to="{ name: 'BuyPlans', params: { type: 'platinum' } }"
             class="btn"
@@ -24,16 +30,22 @@
         </div>
         <div class="plan">
           <p class="plan-type">Wallet Protection : Gold</p>
-          <p class="plan-price">Rs. 2100 <span>only/Year</span></p>
+          <p class="plan-price">Rs. 1800 <span>only/Year</span></p>
           <p class="s-fs mb-0">Including all taxes</p>
-          <p class="m-fs">(an affordable 205/month)</p>
+          <p class="m-fs">(an affordable 150/month)</p>
+          <p class="m-fs">Benefits</p>
           <ul>
-            <li>All Credit/Debits card blocking</li>
-            <li>All Identity cards replacement</li>
-            <li>Travel Assistance : Hotel Bill payment</li>
-            <li>Travel Assistance : Ticket booking</li>
-            <li>Travel Assistance : Cash arrangements</li>
+            <li>&rarr; All Credit/Debits card blocking</li>
+            <li>&rarr; All Identity cards replacement</li>
+            <li>&rarr; Travel Assistance : Hotel Bill payment*</li>
+            <li>&rarr; Travel Assistance : Ticket booking*</li>
+            <li>&rarr; Travel Assistance : Cards Fraud protection</li>
+            <li>&rarr; <strong>Get additional 10% discounts if you book the carbon neutral hotel or eco friendly hotels</strong></li>
           </ul>
+          <p class="s-fs">
+            *Need to repay the Advance amount.<br>
+            **This offerings can only  made legal BFSI Entities.
+          </p>
           <router-link
             :to="{ name: 'BuyPlans', params: { type: 'gold' } }"
             class="btn"
@@ -46,7 +58,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'AppPlans',
+  methods: {
+  }
+};
 </script>
 
 <style scoped>
@@ -58,12 +74,14 @@ export default {};
   margin: 0 auto;
 }
 .plans {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   padding: 2rem 0;
-  gap: 5rem;
 }
 .plan {
+  width: 75%;
+  margin: 0 auto;
   padding: 5rem 3rem;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   border-radius: 10px;
@@ -125,6 +143,7 @@ ul {
 ul li {
   margin-bottom: 1rem;
   font-size: 1.5rem;
+  list-style: none;
 }
 .btn:link,
 .btn:visited {
@@ -162,10 +181,12 @@ ul li {
 .m-fs {
   font-size: 1.6rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .plans {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     padding: 0 15%;
+    gap: 5rem;
   } 
 }
 </style>

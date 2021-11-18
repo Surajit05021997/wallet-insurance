@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { addCustomerService, getCustomerDetailsService } from '@/service/service.js'
+import { addCustomerService, getCustomerDetailsService, getPreCustomer } from '@/service/service.js'
 
 Vue.use(Vuex)
 
@@ -9,6 +9,7 @@ export default new Vuex.Store({
     isLoggedIn: false,
     loggedInUser: '',
     customerDetails: '',
+    preCustomer: {},
   },
   mutations: {
     setCustomerdetails(state, payload) {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     setLoggedInUser(state, payload) {
       state.loggedInUser = payload;
+    },
+    setPreCustomer(state, payload) {
+      state.preCustomer = payload;
     }
   },
   actions: {
@@ -34,7 +38,14 @@ export default new Vuex.Store({
     },
     async setLoggedInUserAction({ commit }, username) {
       commit('setLoggedInUser', username);
-    }
+    },
+    async setPreCustomerAction({ commit }) {
+      const preCustomer = await getPreCustomer();
+      commit ('setPreCustomer', preCustomer);
+    },
+  },
+  getters: {
+    
   },
   modules: {
   }

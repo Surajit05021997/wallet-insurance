@@ -1,26 +1,47 @@
 <template>
   <div class="container">
     <div class="summery-display">
-      <p class="plan-type">Wallet Protection : {{ $route.params.type }} plan</p>
+      <p class="plan-type">Wallet Protection : {{ preCustomer.type }} plan</p>
       <p class="plan-price">
         <span>Plan Price </span>
-        <span v-if="$route.params.type === 'platinum'"
-          ><strong>Rs. 24000 /year</strong></span
+        <span v-if="preCustomer.type === 'platinum'"
+          ><strong>Rs. 2400 /year</strong></span
         >
-        <span v-if="$route.params.type === 'gold'"
-          ><strong>Rs. 2100 /year</strong></span
+        <span v-if="preCustomer.type === 'gold'"
+          ><strong>Rs. 1800 /year</strong></span
         >
       </p>
       <p>Inclusive of all taxes</p>
+      <p class="sub-heading">Additional Insurance Taken</p>
+      <p v-if="!preCustomer.isTravelInsTaken && !preCustomer.isMobileInsTaken && !preCustomer.isCyberInsTaken" class="plan-price additional">
+        <span>None</span>
+        <span><strong>Rs. 0</strong></span>
+      </p>
+      <p v-if="preCustomer.isTravelInsTaken" class="plan-price additional">
+        <span>Travel Insurance</span>
+        <span><strong>Rs. 2000</strong></span>
+      </p>
+      <p v-if="preCustomer.isMobileInsTaken" class="plan-price additional">
+        <span>Mobile insurance</span>
+        <span><strong>Rs. 1500</strong></span>  
+      </p>
+      <p v-if="preCustomer.isCyberInsTaken" class="plan-price additional">
+        <span>Cyber Security Insurance</span>
+        <span><strong>Rs. 1800</strong></span>
+      </p>
+      <hr>
+      <p class="plan-price additional">
+        <span>Total</span>
+        <span><strong>Rs. {{preCustomer.priceWithoutDiscount}}</strong></span>
+      </p>
+      <p class="plan-price additional">
+        <span>Discounted Amount</span>
+        <span><strong>- Rs. {{preCustomer.priceWithoutDiscount - preCustomer.totalPrice}}</strong></span>
+      </p>
       <hr />
       <div class="plan-price">
-        <p>Amount to be paid</p>
-        <span v-if="$route.params.type === 'platinum'"
-          ><strong>Rs. 24000</strong></span
-        >
-        <span v-if="$route.params.type === 'gold'"
-          ><strong>Rs. 2100</strong></span
-        >
+        <p><strong>Amount to be paid</strong></p>
+        <span><strong>Rs. {{preCustomer.totalPrice}}</strong></span>
       </div>
     </div>
     <div>
@@ -140,7 +161,7 @@
 <script>
 import emailjs from "emailjs-com";
 import { addCustomerService } from "@/service/service.js";
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -166,8 +187,14 @@ export default {
       isModalVisible: false,
     };
   },
+  created() {
+    this.setPreCustomerAction();
+  },
+  computed: {
+    ...mapState(['preCustomer']),
+  },
   methods: {
-    ...mapActions(["addCustomerAction"]),
+    ...mapActions(['addCustomerAction', 'setPreCustomerAction']),
     toggle(option) {
       if (option === 1) {
         this.visible_1 = !this.visible_1;
@@ -195,22 +222,15 @@ export default {
         this.isCvvValid
       ) {
         this.isModalVisible = true;
-        addCustomerService({
-          name: this.$route.params.name,
-          mobileNum: this.$route.params.number,
-          emailId: this.$route.params.email,
-          type: this.$route.params.type,
-          username: this.generateUsername(),
-          password: this.generatePassword(),
-        });
-      }
-    },
-    validatePayment() {
-      this.validateBank();
-      if (this.isbankSelectedValid === true) {
-        this.isModalVisible = true;
         this.username = this.generateUsername();
         this.password = this.generatePassword();
+        const emailData = {
+          userName: this.$route.params.name,
+          toEmail: this.$route.params.email,
+          plan: this.$route.params.type,
+          username: this.username,
+          password: this.password,
+        }
         addCustomerService({
           name: this.$route.params.name,
           mobileNum: this.$route.params.number,
@@ -219,22 +239,32 @@ export default {
           username: this.username,
           password: this.password,
         });
+        this.sendEmail(emailData);
       }
-      const tempParam = {
-        userName: this.$route.params.name,
-        toEmail: this.$route.params.email,
-        plan: this.$route.params.type,
-        username: this.username,
-        password: this.password,
-      }
-      emailjs.send('service_5cvw2qt','template_062645a',tempParam, 'user_fqh1IkfZvXU3VhM5ZYuXJ').then(
-        function () {
-          console.log("SUCCESS!");
-        },
-        function (error) {
-          console.log("FAILED...", error);
+    },
+    validatePayment() {
+      this.validateBank();
+      if (this.isbankSelectedValid === true) {
+        this.isModalVisible = true;
+        this.username = this.generateUsername();
+        this.password = this.generatePassword();
+        const emailData = {
+          userName: this.$route.params.name,
+          toEmail: this.$route.params.email,
+          plan: this.$route.params.type,
+          username: this.username,
+          password: this.password,
         }
-      );
+        addCustomerService({
+          name: this.$route.params.name,
+          mobileNum: this.$route.params.number,
+          emailId: this.$route.params.email,
+          type: this.$route.params.type,
+          username: this.username,
+          password: this.password,
+        });
+        this.sendEmail(emailData);
+      }
     },
     validateCardNumber() {
       if (this.cardNumber) {
@@ -293,19 +323,26 @@ export default {
         this.isbankSelectedValid = false;
       }
     },
-    addCustomer() {
-      this.addCustomerAction(this.$route.params);
-    },
     upiPayment() {
       this.isModalVisible = true;
+      this.username = this.generateUsername();
+      this.password = this.generatePassword();
+      const emailData = {
+        userName: this.$route.params.name,
+        toEmail: this.$route.params.email,
+        plan: this.$route.params.type,
+        username: this.username,
+        password: this.password,
+      }
       addCustomerService({
         name: this.$route.params.name,
         mobileNum: this.$route.params.number,
         emailId: this.$route.params.email,
         type: this.$route.params.type,
-        username: this.generateUsername(),
-        password: this.generatePassword(),
+        username: this.username,
+        password: this.password,
       });
+      this.sendEmail(emailData);
     },
     closeModal() {
       this.isModalVisible = false;
@@ -316,7 +353,7 @@ export default {
         "0123456789!@#$%^&*abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
       const passwordLength = 8;
       let password = "";
-      for (let i = 0; i <= passwordLength; i++) {
+      for (let i = 0; i < passwordLength; i++) {
         const randomNumber = Math.floor(Math.random() * chars.length);
         password += chars.substring(randomNumber, randomNumber + 1);
       }
@@ -327,12 +364,22 @@ export default {
         "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
       const usernameLength = 8;
       let username = "";
-      for (let i = 0; i <= usernameLength; i++) {
+      for (let i = 0; i < usernameLength; i++) {
         const randomNumber = Math.floor(Math.random() * chars.length);
         username += chars.substring(randomNumber, randomNumber + 1);
       }
       return username;
     },
+    sendEmail(mailData) {
+      emailjs.send('service_5cvw2qt','template_062645a',mailData , 'user_fqh1IkfZvXU3VhM5ZYuXJ').then(
+        function () {
+          console.log("SUCCESS!");
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
+    }
   },
   watch: {
     bankSelected() {
@@ -445,7 +492,7 @@ export default {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
+  transition: all 0.3ms;
   visibility: hidden;
   opacity: 0;
   z-index: 10;
@@ -499,5 +546,12 @@ export default {
 .payment-successful {
   width: 5rem;
   stroke: #007fff;
+}
+.additional span {
+  font-size: 1.5rem;
+}
+.sub-heading {
+  font-size: 2rem;
+  font-weight: 700;
 }
 </style>

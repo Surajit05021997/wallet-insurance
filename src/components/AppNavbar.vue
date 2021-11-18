@@ -5,7 +5,7 @@
       <router-link v-if="isLoggedIn" class="logo" :to="{ name: 'Dashboard' }">Wallet-Insurance</router-link>
       <div class="right-nav" v-if="!isLoggedIn">
         <!-- <div class="right-nav"> -->
-          <router-link :to="{ name: 'Home'}">Home</router-link>
+          <router-link :to="{ name: 'Home'}"><span @click="scrollToTop()">Home</span></router-link>
           <a href="#service" v-if="$route.path === '/'">Service</a>
           <a href="#plans" v-if="$route.path === '/'">Plans</a>
           <a href="#contact-us" v-if="$route.path === '/'">Contact</a>
@@ -32,7 +32,10 @@ export default {
     logout() {
       this.setLoginStatusAction(false);
       this.$router.push({ name: 'Home' });
-    }
+    },
+    scrollToTop() {
+      window.scrollTo(0,0);
+    },
   }
 }
 </script>
