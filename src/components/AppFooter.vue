@@ -14,8 +14,7 @@ export default {
 
 <style scoped>
   .footer-text {
-    /* background: linear-gradient(#fff, #80bfff); */
-    box-shadow: rgb(0 0 0 / 10%) 0px 0px 12px 0px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
     text-align: center;
     padding: 2rem;
   }

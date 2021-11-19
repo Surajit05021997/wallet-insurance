@@ -82,11 +82,20 @@
       "username": "3OZlVIbo",
       "password": "aMFFkYn7",
       "id": 8
+    },
+    {
+      "name": "Surajit Maity",
+      "mobileNum": "0908349569",
+      "emailId": "surajitmaity12345@gmail.com",
+      "type": "platinum",
+      "username": "Yfy55baB",
+      "password": "Kx0rMu^@",
+      "id": 9
     }
   ],
   "preCustomer": {
     "name": "Surajit Maity",
-    "number": "9083495694",
+    "number": "0908349569",
     "email": "surajitmaity12345@gmail.com",
     "type": "platinum",
     "isTravelInsTaken": false,
@@ -142,6 +151,13 @@
       "insuranceAmount": "150000",
       "mobileNum": "9083495694",
       "id": 3
+    },
+    {
+      "startDate": "11/19/2021",
+      "endDate": "11/19/2022",
+      "insuranceAmount": "150000",
+      "mobileNum": "0908349569",
+      "id": 4
     }
   ],
   "registeredCards": [

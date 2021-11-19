@@ -5,43 +5,43 @@
       <p class="plan-price">
         <span>Plan Price </span>
         <span v-if="preCustomer.type === 'platinum'"
-          ><strong>Rs. 2400 /year</strong></span
+          ><strong>₹ 2400 /year</strong></span
         >
         <span v-if="preCustomer.type === 'gold'"
-          ><strong>Rs. 1800 /year</strong></span
+          ><strong>₹ 1800 /year</strong></span
         >
       </p>
       <p>Inclusive of all taxes</p>
       <p class="sub-heading">Additional Insurance Taken</p>
       <p v-if="!preCustomer.isTravelInsTaken && !preCustomer.isMobileInsTaken && !preCustomer.isCyberInsTaken" class="plan-price additional">
         <span>None</span>
-        <span><strong>Rs. 0</strong></span>
+        <span><strong>₹ 0</strong></span>
       </p>
       <p v-if="preCustomer.isTravelInsTaken" class="plan-price additional">
         <span>Travel Insurance</span>
-        <span><strong>Rs. 2000</strong></span>
+        <span><strong>₹ 2000</strong></span>
       </p>
       <p v-if="preCustomer.isMobileInsTaken" class="plan-price additional">
         <span>Mobile insurance</span>
-        <span><strong>Rs. 1500</strong></span>  
+        <span><strong>₹ 1500</strong></span>  
       </p>
       <p v-if="preCustomer.isCyberInsTaken" class="plan-price additional">
         <span>Cyber Security Insurance</span>
-        <span><strong>Rs. 1800</strong></span>
+        <span><strong>₹ 1800</strong></span>
       </p>
       <hr>
       <p class="plan-price additional">
         <span>Total</span>
-        <span><strong>Rs. {{preCustomer.priceWithoutDiscount}}</strong></span>
+        <span><strong>₹ {{preCustomer.priceWithoutDiscount}}</strong></span>
       </p>
       <p class="plan-price additional">
         <span>Discounted Amount</span>
-        <span><strong>- Rs. {{preCustomer.priceWithoutDiscount - preCustomer.totalPrice}}</strong></span>
+        <span><strong>- ₹ {{preCustomer.priceWithoutDiscount - preCustomer.totalPrice}}</strong></span>
       </p>
       <hr />
       <div class="plan-price">
         <p><strong>Amount to be paid</strong></p>
-        <span><strong>Rs. {{preCustomer.totalPrice}}</strong></span>
+        <span><strong>₹ {{preCustomer.totalPrice}}</strong></span>
       </div>
     </div>
     <div>
@@ -441,19 +441,17 @@ export default {
 .btn {
   font-size: 2rem;
   font-weight: 500;
-  color: #333;
+  color: #fff;
   text-decoration: none;
   padding: 0.5rem 2rem;
-  background-color: #fff;
-  box-shadow: inset 0 0 0 0.2rem #007fff;
+  background-color: #007fff;
   border-radius: 20rem;
   transition: all 0.3s;
 }
 
 .btn:hover {
   cursor: pointer;
-  box-shadow: inset 0 0 0 0.2rem #007fff;
-  background-color: #007fff;
+  background-color: #0062c4;
   color: #fff;
 }
 .field {
@@ -479,9 +477,11 @@ export default {
   border-radius: 10px;
   padding: 1rem;
   margin: 1rem;
+  transition: all 0.3s;
 }
 .upi img:hover {
   cursor: pointer;
+  background-color: #ddd;
 }
 .net-banking {
   font-size: 1.5rem;

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div class="container-fluid">
+    <div>
       <div style="position: sticky; top:0;background: #fff; z-index:5">
-        <app-navbar></app-navbar><hr>
+        <app-navbar></app-navbar>
     </div>
-    <div class="row">
+    <div>
       <div v-if="isLoggedIn" class="col-lg-2 col-md-2">
         <app-sidebar></app-sidebar>
       </div>

@@ -51,7 +51,11 @@ export default {
     margin: 0 auto;
   }
   .app-feature {
-    padding: 2rem;
+    padding: 7.5rem 2rem;
+    padding-bottom: 0;
+  }
+  p {
+    margin: 0;
   }
   .heading {
     font-size: 4.5rem;
@@ -79,7 +83,7 @@ export default {
     margin: auto 0;
   }
   .feature {
-    padding: 2rem;
+    padding: 0.5rem 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -90,7 +94,7 @@ export default {
   }
   .icon {
     width: 10rem;
-    stroke: #80bfff;
+    stroke: #007fff;
   }
   .feature-description h3 {
     font-size: 2.7rem;

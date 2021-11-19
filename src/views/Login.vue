@@ -1,22 +1,24 @@
 <template>
-  <div class="container">
-    <div class="login-card">
-      <div class="login-img">
-        <p class="img-des">Nice to see you again</p>
-        <p class="img-heading">WELCOME BACK</p>
-      </div>
-      <div class="login-field">
-        <p class="field-des">Login Account</p>
-        <form class="login-form" @submit.prevent="authenticate">
-          <p class="invalid" v-if="isInvalid">Your username or password is incorrecct.</p>
-          <input type="text" placeholder="Username" v-model="username">
-          <input type="password" placeholder="Password" v-model="password">
-          <div class="remember-user">
-            <input type="checkbox">
-            <label>Remember username</label>
-          </div>
-          <button class="btn">LOGIN</button>
-        </form>
+  <div class="login">
+    <div class="container">
+      <div class="login-card">
+        <div class="login-img">
+          <p class="img-des">Nice to see you again</p>
+          <p class="img-heading">WELCOME BACK</p>
+        </div>
+        <div class="login-field">
+          <p class="field-des">Login Account</p>
+          <form class="login-form" @submit.prevent="authenticate">
+            <p class="invalid" v-if="isInvalid">Your username or password is incorrecct.</p>
+            <input type="text" placeholder="Username" v-model="username">
+            <input type="password" placeholder="Password" v-model="password">
+            <div class="remember-user">
+              <input type="checkbox">
+              <label>Remember username</label>
+            </div>
+            <button class="btn">LOGIN</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -61,15 +63,19 @@ export default {
 </script>
 
 <style scoped>
+.login {
+  background: linear-gradient(42deg, rgba(0,101,209,1) 0%, rgba(243,248,255,1) 51%, rgba(201,217,255,1) 100%);
+}
 .container {
   max-width: 120rem;
-  margin: 5rem auto;
-  padding: 0 2rem;
+  margin: 0 auto;
+  padding: 5rem 2rem;
 }
 .login-card {
   max-width:80rem;
-  margin: 5rem auto;
+  margin: 0 auto;
   height: 50rem;
+  border-radius: 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -98,6 +104,7 @@ export default {
   color: #fff;
 }
 .login-field {
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;

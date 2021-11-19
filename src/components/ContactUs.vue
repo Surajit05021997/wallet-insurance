@@ -10,11 +10,11 @@
           />
         </div>
         <div>
-          <p class="contact-heading">Get in touch</p>
+          <!-- <p class="contact-heading">Get in touch</p>
           <p class="contact-text">
             Want to get in touch? We'd love to hear from you. Here's how you can
             reach us...
-          </p>
+          </p> -->
           <div class="contact-item">
             <div>
               <div class="icon-container">
@@ -56,8 +56,9 @@
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <p>Raise a request</p>
+                <p>Write to us</p>
               </div>
+              <p class="contact-text">Be it an enquiry, feedback or a suggestion, write to us & we'll get back to you.</p>
               <a class="btn" href="#modal-visible">Contact Support</a>
             </div>
           </div>
@@ -180,7 +181,7 @@
       </div>
       <div class="overlay" id="modal-visible">
         <div class="popup">
-          <h2>Raise a request</h2>
+          <h2>Write to us</h2>
           <a class="close" href="#contact-us">&times;</a>
           <div class="content">
             <form class="contact-form" @submit.prevent>
@@ -216,7 +217,7 @@ export default {
 
 <style scoped>
 .contact-us {
-  padding: 2rem;
+  padding: 7.5rem 2rem ;
 }
 .container {
   max-width: 120rem;
@@ -224,7 +225,6 @@ export default {
 }
 .heading {
   font-size: 4.5rem;
-  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -250,7 +250,7 @@ export default {
 .contact-item {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 4rem;
 }
 .contact-us-content {
   display: grid;
@@ -264,12 +264,15 @@ export default {
 .call-icon,
 .mail-icon {
   width: 24px;
+  stroke: #007fff;
 }
 .contact-heading {
   font-size: 3rem;
+  margin-bottom: 0;
 }
 .contact-text {
   font-size: 1.8rem;
+  margin-bottom: 3rem;
 }
 .icon-container {
   display: flex;
@@ -305,20 +308,18 @@ textarea {
 .btn {
   font-size: 2rem;
   font-weight: 500;
-  color: #333;
+  color: #fff;
   text-decoration: none;
   padding: 0.5rem 2rem;
   width: fit-content;
-  background-color: #fff;
-  box-shadow: inset 0 0 0 0.2rem #007fff;
+  background-color: #007fff;
   border-radius: 20rem;
   transition: all 0.3s;
 }
 
 .btn:hover {
   cursor: pointer;
-  box-shadow: inset 0 0 0 0.2rem #007fff;
-  background-color: #007fff;
+  background-color: #0062c4;
   color: #fff;
 }
 .overlay {

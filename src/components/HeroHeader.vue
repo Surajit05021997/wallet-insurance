@@ -23,8 +23,9 @@ export default {
 
 <style scoped>
   .hero-header {
-    /* background-color: #80bfff; */
+    background: linear-gradient(90deg, rgba(125,188,255,1) 0%, rgba(255,255,255,0.9531162806919643) 50%);
     padding: 2rem;
+    padding-bottom: 0;
   }
   .container {
     max-width: 120rem;
@@ -34,7 +35,7 @@ export default {
     align-items: center;
   }
   .hero-text-box {
-    padding: 7rem 0;
+    padding: 4rem 0;
   }
   .hero-text-box h1 {
     font-size: 7rem;
@@ -49,19 +50,19 @@ export default {
   .btn:link, .btn:visited {
     font-size: 2rem;
     font-weight:500;
-    color: #333;
+    color: #fff;
     text-decoration: none;
     padding:0.5rem 2rem;
-    background-color: #fff;
-    box-shadow: inset 0 0 0 0.2rem #007fff;
+    background-color: #007fff;
+    /* box-shadow: inset 0 0 0 0.2rem #007fff; */
     border-radius: 20rem;
     transition: all 0.3s;
   }
 
   .btn:hover, .btn:active {
     cursor: pointer;
-    box-shadow: inset 0 0 0 0.2rem #007fff;
-    background-color: #007fff;
+    /* box-shadow: inset 0 0 0 0.2rem #007fff; */
+    background-color: #0062c4;
     color: #fff;
   }
   .hero-img-box {

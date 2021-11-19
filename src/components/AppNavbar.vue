@@ -2,16 +2,16 @@
   <nav class="navbar">
     <div class="container">
       <div class="brand">
-        <router-link v-if="!isLoggedIn" class="wallet-icon" :to="{ name: 'Home' }">
+        <router-link v-if="!isLoggedIn" class="wallet-icon" :to="{ name: 'Home' }" @click="scrollToTop()">
           <img src="@/assets/wallet-icon.svg" alt="Wallet Icon">
         </router-link>
-        <router-link v-if="!isLoggedIn" class="logo" :to="{ name: 'Home' }">Wallet-Insurance</router-link>
+        <router-link v-if="!isLoggedIn" class="logo" :to="{ name: 'Home' }" @click="scrollToTop()">Wallet-Insurance</router-link>
       </div>
       <div class="brand">
-        <router-link v-if="isLoggedIn" class="wallet-icon" :to="{ name: 'Dashboard' }">
+        <router-link v-if="isLoggedIn" class="wallet-icon" :to="{ name: 'Dashboard' }" @click="scrollToTop()">
           <img src="@/assets/wallet-icon.svg" alt="Wallet Icon">
         </router-link>
-        <router-link v-if="isLoggedIn" class="logo" :to="{ name: 'Dashboard' }">Wallet-Insurance</router-link>
+        <router-link v-if="isLoggedIn" class="logo" :to="{ name: 'Dashboard' }" @click="scrollToTop()">Wallet-Insurance</router-link>
       </div>
       <div class="right-nav" v-if="!isLoggedIn">
         <!-- <div class="right-nav"> -->
@@ -26,6 +26,7 @@
         <a class="logout-btn" @click="logout"><strong>Logout</strong></a>
       </div>
     </div>
+    <img class="christmas-logo" src="../assets/bauble-christmas.svg" alt="Christmas bauble">
   </nav>
 </template>
 
@@ -53,6 +54,7 @@ export default {
 <style scoped>
   .navbar {
     padding: 0.5rem 2rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   }
 
   .container {
@@ -99,19 +101,24 @@ export default {
   .login-btn:link, .login-btn:visited, .logout-btn:link, .logout-btn:visited, .btn {
     font-size: 2rem;
     font-weight:500;
-    color: #333;
+    color: #fff;
     text-decoration: none;
     padding:0.5rem 2rem;
-    background-color: #fff;
-    box-shadow: inset 0 0 0 0.2rem #007fff;
+    background-color: #007fff;
     border-radius: 20rem;
     transition: all 0.3s;
   }
 
   .login-btn:hover, .login-btn:active, .logout-btn:hover, .logout-btn:active, .btn:hover {
     cursor: pointer;
-    box-shadow: inset 0 0 0 0.2rem #007fff;
-    background-color: #007fff;
+    background-color: #0062c4;
     color: #fff;
+  }
+  .christmas-logo {
+    position: absolute;
+    z-index: 5;
+    height: 100px;
+    top: 70px;
+    right: 0;
   }
 </style>

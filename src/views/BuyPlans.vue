@@ -42,6 +42,12 @@
               </div>
             </div>
           </div>
+          <div class="lock">
+            <svg xmlns="http://www.w3.org/2000/svg" class="lock-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            <p>Your data is encrypted. 100% safe and secure.</p>
+          </div>
           <button class="btn"><strong>Continue to payment</strong></button>
         </form>
         <div>
@@ -52,10 +58,10 @@
             <p class="plan-price">
               <span>Plan Price </span>
               <span v-if="$route.params.type === 'platinum'"
-                ><strong>Rs. 2400 /year</strong></span
+                ><strong>₹ 2400 /year</strong></span
               >
               <span v-if="$route.params.type === 'gold'"
-                ><strong>Rs. 1800 /year</strong></span
+                ><strong>₹ 1800 /year</strong></span
               >
             </p>
             <p>Inclusive of all taxes</p>
@@ -69,32 +75,32 @@
               class="plan-price additional"
             >
               <span>None</span>
-              <span><strong>Rs. 0</strong></span>
+              <span><strong>₹ 0</strong></span>
             </p>
             <p v-if="this.isTravelInsTaken" class="plan-price additional">
               <span>Travel Insurance</span>
-              <span><strong>Rs. 2000</strong></span>
+              <span><strong>₹ 2000</strong></span>
             </p>
             <p v-if="this.isMobileInsTaken" class="plan-price additional">
               <span>Mobile insurance</span>
-              <span><strong>Rs. 1500</strong></span>
+              <span><strong>₹ 1500</strong></span>
             </p>
             <p v-if="this.isCyberInsTaken" class="plan-price additional">
               <span>Cyber Security Insurance</span>
-              <span><strong>Rs. 1800</strong></span>
+              <span><strong>₹ 1800</strong></span>
             </p>
             <hr />
             <p class="plan-price additional">
               <span>Total</span>
               <span
-                ><strong>Rs. {{ this.priceWithoutDiscount }}</strong></span
+                ><strong>₹ {{ this.priceWithoutDiscount }}</strong></span
               >
             </p>
             <p class="plan-price additional">
               <span>Discounted Amount</span>
               <span
                 ><strong
-                  >- Rs.
+                  >- ₹
                   {{ this.priceWithoutDiscount - this.totalPrice() }}</strong
                 ></span
               >
@@ -104,45 +110,36 @@
             <div class="plan-price">
               <p><strong>Amount to be paid</strong></p>
               <span
-                ><strong>Rs. {{ totalPrice() }}</strong></span
+                ><strong>₹ {{ totalPrice() }}</strong></span
               >
             </div>
           </div>
           <div class="addons">
             <p class="heading">Addition insurance</p>
             <p class="discount-text">
-              Get 10% discount on total by selecting one addition insurance.
-            </p>
-            <p class="discount-text">
-              Get 20% discount on total by selecting two addition insurance.
-            </p>
-            <p class="discount-text">
-              Get 30% discount on total by selecting three addition insurance.
+              Get additional 10% discount on total with each additional insurance.
             </p>
             <form>
               <div class="addon-options">
-                <input type="checkbox" v-model="isTravelInsTaken" />
-                <label
-                  >Travel Insurance<br /><strong
-                    >Rs. 2000 only/year</strong
-                  ></label
-                >
+                <div>
+                  <input type="checkbox" v-model="isTravelInsTaken" />
+                  <label>Travel Insurance</label>
+                </div>
+                <p><strong>₹ 2000 only/year</strong></p>
               </div>
               <div class="addon-options">
-                <input type="checkbox" v-model="isMobileInsTaken" />
-                <label
-                  >Mobile insurance<br /><strong
-                    >Rs. 1500 only/year</strong
-                  ></label
-                >
+                <div>
+                  <input type="checkbox" v-model="isMobileInsTaken" />
+                  <label>Mobile insurance</label>
+                </div>
+                <p><strong>₹ 1500 only/year</strong></p>
               </div>
               <div class="addon-options">
-                <input type="checkbox" v-model="isCyberInsTaken" />
-                <label
-                  >Cyber security insurance<br /><strong
-                    >Rs. 1800 only/year</strong
-                  ></label
-                >
+                <div>
+                  <input type="checkbox" v-model="isCyberInsTaken" />
+                  <label>Cyber security insurance</label>
+                </div>
+                <p><strong>₹ 1800 only/year</strong></p>
               </div>
             </form>
           </div>
@@ -340,8 +337,12 @@ export default {
 </script>
 
 <style scoped>
+p {
+  margin: 0;
+}
 .buy-plans {
   padding: 2rem;
+  padding-top: 1rem;
 }
 .container {
   max-width: 120rem;
@@ -349,12 +350,11 @@ export default {
 }
 .des {
   font-size: 2.5rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 .box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   grid-gap: 3rem;
   align-items: start;
 }
@@ -364,7 +364,7 @@ export default {
 }
 .field-box {
   padding: 2rem;
-  box-shadow: 0 0 10px 0 #ddd;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   border-radius: 5px;
   margin-bottom: 3rem;
   display: grid;
@@ -384,24 +384,24 @@ input {
   padding-left: 5px;
 }
 .btn {
+  display: block;
   background-color: #007fff;
   padding: 1rem 2rem;
-  margin: 2rem;
-  margin-left: 0;
+  margin: 2rem auto;
   text-decoration: none;
   border-style: none;
   border-radius: 20rem;
   font-size: 2rem;
   color: #fff;
+  transition: all 0.3s;
 }
 .btn:hover {
   cursor: pointer;
-  background-color: #fff;
-  color: #000;
-  box-shadow: inset 0 0 0 0.2rem #007fff;
+  background-color: #0062c4;
+  color: #fff;
 }
 .summery-display {
-  box-shadow: 0 0 10px 0 #ddd;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   padding: 2rem;
   border-radius: 5px;
 }
@@ -445,7 +445,7 @@ input {
 }
 .addons {
   margin: 2rem 0;
-  box-shadow: 0 0 10px 0 #ddd;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   padding: 2rem;
   border-radius: 5px;
 }
@@ -460,14 +460,34 @@ input {
   margin: 1rem 0;
 }
 .addons form label {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding-left: 1rem;
+}
+.addons form p {
+  font-size: 1.5rem;
 }
 .addon-options {
   display: flex;
-  margin: 1rem 0;
+  justify-content: space-between;
+  align-items: center;
 }
-
+.additional span {
+  font-size: 1.5rem;
+}
+.sub-heading {
+  font-size: 2rem;
+}
+.lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+.lock-icon {
+  width: 3rem;
+  height: 3rem;
+  stroke: limegreen
+}
 @media screen and (max-width: 992px) {
   .box {
     display: grid;
@@ -480,11 +500,5 @@ input {
   .box form {
     order: 2;
   }
-}
-.additional span {
-  font-size: 1.5rem;
-}
-.sub-heading {
-  font-size: 2rem;
 }
 </style>
