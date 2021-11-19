@@ -44,4 +44,12 @@ async function getCustomerDetailsService(username) {
   }
 }
 
-export { getCustomerService, addCustomerService, getCustomerDetailsService, addPreCustomer, getPreCustomer }
+async function addPolicy(policy) {
+  try {
+    await axios.post('http://localhost:3001/policies', policy);
+  } catch(error) {
+    console.log(error);
+  }
+}
+
+export { getCustomerService, addCustomerService, getCustomerDetailsService, addPreCustomer, getPreCustomer, addPolicy }

@@ -55,18 +55,45 @@
       "username": "gkn0xIgfo",
       "password": "rfm%2Ze06",
       "id": 5
+    },
+    {
+      "name": "Surajit Maity",
+      "mobileNum": "0908349569",
+      "emailId": "surajitmaity12345@gmail.com",
+      "type": "platinum",
+      "username": "gWwBvkdg",
+      "password": "g7yMIkj6",
+      "id": 6
+    },
+    {
+      "name": "Surajit Maity",
+      "mobileNum": "0908349569",
+      "emailId": "surajitmaity12345@gmail.com",
+      "type": "platinum",
+      "username": "slUB4tzp",
+      "password": "oH$X%idK",
+      "id": 7
+    },
+    {
+      "name": "Surajit Maity",
+      "mobileNum": "9083495694",
+      "emailId": "surajitmaity12345@gmail.com",
+      "type": "platinum",
+      "username": "3OZlVIbo",
+      "password": "aMFFkYn7",
+      "id": 8
     }
   ],
   "preCustomer": {
     "name": "Surajit Maity",
-    "number": "0908349569",
+    "number": "9083495694",
     "email": "surajitmaity12345@gmail.com",
     "type": "platinum",
-    "isTravelInsTaken": true,
+    "isTravelInsTaken": false,
     "isMobileInsTaken": false,
-    "isCyberInsTaken": true,
-    "totalPrice": 4960,
-    "priceWithoutDiscount": 6200
+    "isCyberInsTaken": false,
+    "totalPrice": 2400,
+    "priceWithoutDiscount": 2400
   },
   "banks": [
     {
@@ -96,18 +123,25 @@
   ],
   "policies": [
     {
-      "policyId": "P01",
+      "id": 1,
       "startDate": "2018-08-03",
       "endDate": "2022-08-03",
       "insuranceAmount": "150000",
       "mobileNum": 9553546756
     },
     {
-      "policyId": "P02",
+      "id": 2,
       "startDate": "2018-08-03",
       "endDate": "2021-10-13",
       "insuranceAmount": "100000",
       "mobileNum": 9553805468
+    },
+    {
+      "startDate": "11/18/2021",
+      "endDate": "11/18/2022",
+      "insuranceAmount": "150000",
+      "mobileNum": "9083495694",
+      "id": 3
     }
   ],
   "registeredCards": [

@@ -160,7 +160,7 @@
 
 <script>
 import emailjs from "emailjs-com";
-import { addCustomerService } from "@/service/service.js";
+import { addCustomerService, addPolicy } from "@/service/service.js";
 import { mapState, mapActions } from "vuex";
 export default {
   data() {
@@ -185,10 +185,13 @@ export default {
       isEmptyCvv: false,
       isbankSelectedValid: true,
       isModalVisible: false,
+      startDate: '',
+      endDate: '',
     };
   },
   created() {
     this.setPreCustomerAction();
+    this.getDate();
   },
   computed: {
     ...mapState(['preCustomer']),
@@ -240,6 +243,12 @@ export default {
           password: this.password,
         });
         this.sendEmail(emailData);
+        addPolicy({
+          startDate: this.startDate,
+          endDate: this.endDate,
+          insuranceAmount: "150000",
+          mobileNum: this.preCustomer.number,
+        });
       }
     },
     validatePayment() {
@@ -264,6 +273,12 @@ export default {
           password: this.password,
         });
         this.sendEmail(emailData);
+        addPolicy({
+          startDate: this.startDate,
+          endDate: this.endDate,
+          insuranceAmount: "150000",
+          mobileNum: this.preCustomer.number,
+        });
       }
     },
     validateCardNumber() {
@@ -343,6 +358,12 @@ export default {
         password: this.password,
       });
       this.sendEmail(emailData);
+      addPolicy({
+        startDate: this.startDate,
+        endDate: this.endDate,
+        insuranceAmount: "150000",
+        mobileNum: this.preCustomer.number,
+      });
     },
     closeModal() {
       this.isModalVisible = false;
@@ -379,6 +400,15 @@ export default {
           console.log("FAILED...", error);
         }
       );
+    },
+    getDate() {
+      let today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const yyyy = today.getFullYear();
+      const endYear = today.getFullYear() + 1;
+      this.startDate = mm + '/' + dd + '/' + yyyy;
+      this.endDate = mm + '/' + dd + '/' + endYear;
     }
   },
   watch: {

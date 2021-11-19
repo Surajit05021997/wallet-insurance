@@ -4,7 +4,6 @@
       <div class="login-img">
         <p class="img-des">Nice to see you again</p>
         <p class="img-heading">WELCOME BACK</p>
-        <a href="http://www.freepik.com">Background image designed by vector_corp / Freepik</a>
       </div>
       <div class="login-field">
         <p class="field-des">Login Account</p>

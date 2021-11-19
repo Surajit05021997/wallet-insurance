@@ -1,8 +1,18 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <router-link v-if="!isLoggedIn" class="logo" :to="{ name: 'Home' }">Wallet-Insurance</router-link>
-      <router-link v-if="isLoggedIn" class="logo" :to="{ name: 'Dashboard' }">Wallet-Insurance</router-link>
+      <div class="brand">
+        <router-link v-if="!isLoggedIn" class="wallet-icon" :to="{ name: 'Home' }">
+          <img src="@/assets/wallet-icon.svg" alt="Wallet Icon">
+        </router-link>
+        <router-link v-if="!isLoggedIn" class="logo" :to="{ name: 'Home' }">Wallet-Insurance</router-link>
+      </div>
+      <div class="brand">
+        <router-link v-if="isLoggedIn" class="wallet-icon" :to="{ name: 'Dashboard' }">
+          <img src="@/assets/wallet-icon.svg" alt="Wallet Icon">
+        </router-link>
+        <router-link v-if="isLoggedIn" class="logo" :to="{ name: 'Dashboard' }">Wallet-Insurance</router-link>
+      </div>
       <div class="right-nav" v-if="!isLoggedIn">
         <!-- <div class="right-nav"> -->
           <router-link :to="{ name: 'Home'}"><span @click="scrollToTop()">Home</span></router-link>
@@ -51,6 +61,16 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .wallet-icon {
+    width: 5rem;
+    margin: auto 0;
   }
 
   .logo:link, .logo:visited {

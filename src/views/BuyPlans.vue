@@ -83,7 +83,7 @@
               <span>Cyber Security Insurance</span>
               <span><strong>Rs. 1800</strong></span>
             </p>
-            <hr>
+            <hr />
             <p class="plan-price additional">
               <span>Total</span>
               <span
@@ -179,7 +179,7 @@ export default {
     };
   },
   created() {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   },
   methods: {
     ...mapActions(["setPreCustomerAction"]),
@@ -354,7 +354,7 @@ export default {
 }
 .box {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 3rem;
   align-items: start;
 }
